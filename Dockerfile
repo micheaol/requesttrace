@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # ---- Builder stage: install dependencies into an isolated venv -------------
-FROM python:3.12-slim AS builder
+FROM python:3.14-slim AS builder
 
 WORKDIR /build
 
@@ -18,7 +18,7 @@ RUN python -m pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir ".[pdf]"
 
 # ---- Runtime stage: minimal image, non-root user ---------------------------
-FROM python:3.12-slim AS runtime
+FROM python:3.14-slim AS runtime
 
 LABEL org.opencontainers.image.title="RequestTrace" \
       org.opencontainers.image.description="Production request-path, TLS and HTTP security assessment CLI" \
