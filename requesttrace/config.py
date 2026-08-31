@@ -60,7 +60,7 @@ def build_scan_config(
     *,
     target_input: str,
     output_dir: str | Path = "reports",
-    formats: tuple[str, ...] = ("md",),
+    formats: tuple[str, ...] = ("all",),
     fail_on: str = "high",
     baseline_path: str | Path | None = None,
     timeout_seconds: float | None = None,
@@ -80,7 +80,7 @@ def build_scan_config(
     resolved_fail_on = fail_on or overlay.get("fail_on", "high")
     _validate_fail_on(resolved_fail_on)
 
-    resolved_formats = tuple(formats) or tuple(overlay.get("formats", ["md"]))
+    resolved_formats = tuple(formats) or tuple(overlay.get("formats", ["all"]))
     _validate_formats(resolved_formats)
 
     return ScanConfig(
