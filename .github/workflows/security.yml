@@ -2,7 +2,11 @@ name: Security
 
 on:
   push:
-    branches: [main]
+    # SAST/SCA/secrets/license/IaC jobs run on every push here, including
+    # dev and chore/* branches, for fast feedback during development. The
+    # `dast` job below additionally restricts itself to main only — see its
+    # `if:` condition.
+    branches: [main, dev, "chore/**"]
   pull_request:
   schedule:
     # Weekly, independent of code changes — dependency/base-image CVEs get
@@ -209,6 +213,10 @@ jobs:
   dast:
     name: DAST — dynamic detection self-test
     runs-on: ubuntu-latest
+    # Dynamic scanning runs a real build and live target, so it's reserved
+    # for main only — not every dev/chore push or PR. `github.ref` is the
+    # default branch for schedule/workflow_dispatch runs, so those still fire.
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v7
 
