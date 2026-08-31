@@ -6,7 +6,7 @@ local development workflow, code standards and how the project is organized.
 ## Getting Started
 
 ```bash
-git clone https://github.com/<org>/requesttrace.git
+git clone https://github.com/requesttrace/requesttrace.git
 cd requesttrace
 
 python -m venv .venv

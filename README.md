@@ -2,6 +2,18 @@
 
 **Production request-path, TLS and HTTP security assessment CLI**
 
+[![CI](https://github.com/requesttrace/requesttrace/actions/workflows/ci.yml/badge.svg)](https://github.com/requesttrace/requesttrace/actions/workflows/ci.yml)
+[![Release](https://github.com/requesttrace/requesttrace/actions/workflows/release.yml/badge.svg)](https://github.com/requesttrace/requesttrace/actions/workflows/release.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue.svg)](pyproject.toml)
+[![Docker](https://img.shields.io/badge/docker-ready-2496ED?logo=docker&logoColor=white)](Dockerfile)
+[![Multi-arch](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-informational)](.github/workflows/release.yml)
+[![Linting: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Type checked: mypy](https://img.shields.io/badge/mypy-checked-2A6DB2.svg)](https://mypy-lang.org/)
+[![Report schema](https://img.shields.io/badge/report%20schema-v1-informational)](schemas/report.schema.v1.json)
+[![Security Policy](https://img.shields.io/badge/security-policy-blue.svg)](SECURITY.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 RequestTrace takes a production or staging domain/URL and turns the
 externally observable request path — DNS, TCP connectivity, TLS, HTTP,
 redirects, security headers, cookies and CDN/edge indicators — into
@@ -16,6 +28,24 @@ Domain / URL → DNS → TCP → TLS → HTTP → Headers/Cookies/Edge → Findi
 
 Built for DevSecOps engineers, AppSec engineers, developers, SREs, security
 leads and CI/CD pipelines.
+
+## Contents
+
+- [Why RequestTrace?](#why-requesttrace)
+- [Features](#features)
+- [Quick Start](#quick-start)
+- [CLI Reference](#cli-reference)
+- [Reports](#reports)
+- [Exit Codes](#exit-codes)
+- [CI/CD](#cicd)
+- [Architecture](#architecture)
+- [Repository Layout](#repository-layout)
+- [Limitations](#limitations)
+- [Security](#security)
+- [Contributing](#contributing)
+- [Release Engineering](#release-engineering)
+- [Roadmap](#roadmap)
+- [License](#license)
 
 ---
 
@@ -86,13 +116,13 @@ docker run --rm \
   scan https://example.com --report --format all
 ```
 
-(Published images will be available at `ghcr.io/<org>/requesttrace` once
+(Published images will be available at `ghcr.io/requesttrace/requesttrace` once
 this repository has a registry configured — see [Release workflow](#release-engineering).)
 
 ### From source
 
 ```bash
-git clone https://github.com/<org>/requesttrace.git
+git clone https://github.com/requesttrace/requesttrace.git
 cd requesttrace
 
 python -m venv .venv
@@ -197,7 +227,7 @@ requesttrace scan https://example.com --json --fail-on high > report.json
 - name: RequestTrace security scan
   run: |
     docker run --rm -v "$PWD/reports:/app/reports" \
-      ghcr.io/<org>/requesttrace:latest \
+      ghcr.io/requesttrace/requesttrace:latest \
       scan https://example.com --report --format json --fail-on high
 
 - name: Upload report
