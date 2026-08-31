@@ -120,7 +120,7 @@ mkdir -p reports && chmod 777 reports
 docker run --rm \
   -v "$(pwd)/reports:/app/reports" \
   requesttrace:local \
-  scan https://example.com --report --format all
+  scan https://example.com --report
 ```
 
 (Published images will be available at `ghcr.io/micheaol/requesttrace` once
@@ -136,10 +136,24 @@ python -m venv .venv
 source .venv/bin/activate
 
 python -m pip install --upgrade pip
-pip install -e ".[pdf]"   # drop the [pdf] extra to skip PDF support
+pip install -e .
 
 requesttrace scan https://example.com --report
 ```
+
+`--report` writes every format it can: Markdown, HTML and JSON always; PDF
+too if you install the optional extra below (it pulls in Pillow and
+fonttools, so it's a noticeably heavier/slower install — skip it unless you
+need PDF output):
+
+```bash
+pip install -e ".[pdf]"
+```
+
+If `requesttrace: command not found` shows up after this, the venv from
+`source .venv/bin/activate` isn't active in your current shell — re-run
+that line (it only applies to the terminal session it was run in), then
+confirm with `which requesttrace`.
 
 Requires Python 3.10+.
 
@@ -151,7 +165,8 @@ Requires Python 3.10+.
 requesttrace scan <target>
 
 --report                          Write report file(s) to --output.
---format md|html|pdf|json|all     Report format(s) to write (default: md).
+--format md|html|pdf|json|all     Report format(s) to write (default: all; pdf is skipped with a warning
+                                   if the optional 'pdf' extra isn't installed).
 --output <dir>                    Directory for written reports (default: reports).
 --fail-on critical|high|medium|low|never
                                    Minimum severity that causes a policy-breach exit code (default: high).

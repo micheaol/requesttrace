@@ -43,9 +43,10 @@ def main() -> None:
     "--format",
     "report_format",
     type=click.Choice(["md", "html", "pdf", "json", "all"]),
-    default="md",
+    default="all",
     show_default=True,
-    help="Report format(s) to write when --report is set.",
+    help="Report format(s) to write when --report is set. PDF is skipped"
+    " (with a warning) if the optional 'pdf' extra isn't installed.",
 )
 @click.option(
     "--output",
@@ -186,9 +187,15 @@ def _run_scan(
 
     if write_report_files:
         try:
-            written = write_reports(result_scan, scan_config.resolved_formats(), scan_config.output_dir)
+            resolved_formats = scan_config.resolved_formats()
+            written = write_reports(result_scan, resolved_formats, scan_config.output_dir)
             for fmt, path in written.items():
                 emit(f"Wrote {fmt.upper()} report: {path}", quiet=quiet or json_stdout)
+            if "pdf" in resolved_formats and "pdf" not in written:
+                emit(
+                    "Skipped PDF report: the optional 'pdf' extra isn't installed. Run: pip install -e '.[pdf]'",
+                    err=True,
+                )
         except RequestTraceError as exc:
             emit(f"Error: {exc}", err=True)
             return exc.exit_code
