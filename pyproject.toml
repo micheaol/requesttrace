@@ -61,7 +61,7 @@ requesttrace = "requesttrace.cli:main"
 include = ["requesttrace*"]
 
 [tool.setuptools.package-data]
-requesttrace = ["reporting/templates/*.html", "reporting/templates/*.md", "py.typed"]
+requesttrace = ["reporting/templates/*.j2", "py.typed"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
