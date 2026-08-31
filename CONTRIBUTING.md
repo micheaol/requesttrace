@@ -6,14 +6,14 @@ local development workflow, code standards and how the project is organized.
 ## Getting Started
 
 ```bash
-git clone https://github.com/requesttrace/requesttrace.git
+git clone https://github.com/micheaol/requesttrace.git
 cd requesttrace
 
 python -m venv .venv
 source .venv/bin/activate
 
 python -m pip install --upgrade pip
-pip install -e ".[dev,pdf]"
+pip install -e ".[dev,pdf,security]"
 
 pre-commit install
 ```
@@ -35,10 +35,17 @@ pytest
 
 # Coverage
 pytest --cov=requesttrace --cov-report=term-missing
+
+# Security: SAST (Bandit) and SCA (dependency vulnerabilities)
+bandit -r requesttrace -ll
+pip-audit --desc --skip-editable
 ```
 
-All four commands must pass before opening a pull request. `pre-commit`
-runs the linter, formatter and hygiene checks automatically on commit.
+All commands above must pass before opening a pull request. `pre-commit`
+runs the linter, formatter and hygiene checks automatically on commit. See
+[Security Scanning](README.md#security-scanning) in the README for the full
+set of checks CI runs on every PR (SAST, DAST, SCA, secret scanning,
+container/IaC scanning, license compliance).
 
 ## Project Layout
 

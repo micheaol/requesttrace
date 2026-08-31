@@ -71,19 +71,27 @@ class FindingStatus(str, Enum):
 
 
 class AssessmentLabel(str, Enum):
-    """Overall, human-facing assessment label for a completed scan."""
+    """Overall, human-facing assessment label for a completed scan.
 
-    PASS = "PASS"
-    PASS_WITH_OBSERVATIONS = "PASS WITH OBSERVATIONS"
+    Bandit's B105 heuristic flags any string literal assigned to a
+    "PASS*"-named member as a possible hardcoded password; these are
+    assessment-result labels, not credentials.
+    """
+
+    PASS = "PASS"  # nosec B105
+    PASS_WITH_OBSERVATIONS = "PASS WITH OBSERVATIONS"  # nosec B105
     REMEDIATION_REQUIRED = "REMEDIATION REQUIRED"
     HIGH_RISK = "HIGH RISK"
     ASSESSMENT_INCOMPLETE = "ASSESSMENT INCOMPLETE"
 
 
 class ResultKind(str, Enum):
-    """Distinguishes what kind of statement a report row makes."""
+    """Distinguishes what kind of statement a report row makes.
 
-    PASS = "pass"
+    See the B105 note on :class:`AssessmentLabel` above — same false positive.
+    """
+
+    PASS = "pass"  # nosec B105
     OBSERVATION = "observation"
     FINDING = "finding"
     NOT_TESTED = "not_tested"

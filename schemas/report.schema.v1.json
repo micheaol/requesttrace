@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/requesttrace/requesttrace/schemas/report.schema.v1.json",
+  "$id": "https://github.com/micheaol/requesttrace/schemas/report.schema.v1.json",
   "title": "RequestTrace Scan Report",
   "description": "Versioned JSON schema for a RequestTrace scan report (schema_version 1.0.0).",
   "type": "object",

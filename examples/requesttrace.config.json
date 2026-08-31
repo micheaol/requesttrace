@@ -4,7 +4,7 @@
   "fail_on": "high",
   "timeout_seconds": 10,
   "max_redirects": 10,
-  "user_agent": "RequestTrace/1.0 (+https://github.com/requesttrace/requesttrace)",
+  "user_agent": "RequestTrace/1.0 (+https://github.com/micheaol/requesttrace)",
   "certificate_warning_days": 30,
   "certificate_critical_days": 7
 }

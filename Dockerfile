@@ -14,7 +14,7 @@ COPY requesttrace ./requesttrace
 # Installing the project itself pulls in pinned runtime dependencies from
 # pyproject.toml; the optional 'pdf' extra is included so PDF reports work
 # out of the box in the published image.
-RUN python -m pip install --upgrade pip \
+RUN python -m pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir ".[pdf]"
 
 # ---- Runtime stage: minimal image, non-root user ---------------------------
@@ -22,7 +22,7 @@ FROM python:3.12-slim AS runtime
 
 LABEL org.opencontainers.image.title="RequestTrace" \
       org.opencontainers.image.description="Production request-path, TLS and HTTP security assessment CLI" \
-      org.opencontainers.image.source="https://github.com/requesttrace/requesttrace" \
+      org.opencontainers.image.source="https://github.com/micheaol/requesttrace" \
       org.opencontainers.image.licenses="MIT"
 
 # CA certificates are required for TLS trust-chain validation against the
@@ -37,12 +37,16 @@ RUN groupadd --gid 10001 requesttrace \
 COPY --from=builder /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH" \
     PYTHONUNBUFFERED=1 \
-    REQUESTTRACE_IMAGE_REF="ghcr.io/requesttrace/requesttrace"
+    REQUESTTRACE_IMAGE_REF="ghcr.io/micheaol/requesttrace"
 
 RUN mkdir -p /app/reports && chown -R requesttrace:requesttrace /app
 
 WORKDIR /app
-USER requesttrace
+# Numeric uid:gid rather than the name — resolvable even if a runtime
+# environment doesn't mount/preserve /etc/passwd (e.g. some Kubernetes
+# security contexts); it still maps back to "requesttrace" via the account
+# created above wherever /etc/passwd is present.
+USER 10001:10001
 
 VOLUME ["/app/reports"]
 

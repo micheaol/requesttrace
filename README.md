@@ -2,8 +2,9 @@
 
 **Production request-path, TLS and HTTP security assessment CLI**
 
-[![CI](https://github.com/requesttrace/requesttrace/actions/workflows/ci.yml/badge.svg)](https://github.com/requesttrace/requesttrace/actions/workflows/ci.yml)
-[![Release](https://github.com/requesttrace/requesttrace/actions/workflows/release.yml/badge.svg)](https://github.com/requesttrace/requesttrace/actions/workflows/release.yml)
+[![CI](https://github.com/micheaol/requesttrace/actions/workflows/ci.yml/badge.svg)](https://github.com/micheaol/requesttrace/actions/workflows/ci.yml)
+[![Security](https://github.com/micheaol/requesttrace/actions/workflows/security.yml/badge.svg)](https://github.com/micheaol/requesttrace/actions/workflows/security.yml)
+[![Release](https://github.com/micheaol/requesttrace/actions/workflows/release.yml/badge.svg)](https://github.com/micheaol/requesttrace/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue.svg)](pyproject.toml)
 [![Docker](https://img.shields.io/badge/docker-ready-2496ED?logo=docker&logoColor=white)](Dockerfile)
@@ -42,6 +43,7 @@ leads and CI/CD pipelines.
 - [Repository Layout](#repository-layout)
 - [Limitations](#limitations)
 - [Security](#security)
+- [Security Scanning](#security-scanning)
 - [Contributing](#contributing)
 - [Release Engineering](#release-engineering)
 - [Roadmap](#roadmap)
@@ -110,19 +112,24 @@ never presented as more certain than it is.
 ```bash
 docker build -t requesttrace:local .
 
+# The container runs as a fixed non-root user (uid 10001). On Linux, a
+# bind-mounted directory is owned by whichever user/uid created it, so make
+# sure the container's user can write into it before the first run:
+mkdir -p reports && chmod 777 reports
+
 docker run --rm \
   -v "$(pwd)/reports:/app/reports" \
   requesttrace:local \
   scan https://example.com --report --format all
 ```
 
-(Published images will be available at `ghcr.io/requesttrace/requesttrace` once
+(Published images will be available at `ghcr.io/micheaol/requesttrace` once
 this repository has a registry configured — see [Release workflow](#release-engineering).)
 
 ### From source
 
 ```bash
-git clone https://github.com/requesttrace/requesttrace.git
+git clone https://github.com/micheaol/requesttrace.git
 cd requesttrace
 
 python -m venv .venv
@@ -227,7 +234,7 @@ requesttrace scan https://example.com --json --fail-on high > report.json
 - name: RequestTrace security scan
   run: |
     docker run --rm -v "$PWD/reports:/app/reports" \
-      ghcr.io/requesttrace/requesttrace:latest \
+      ghcr.io/micheaol/requesttrace:latest \
       scan https://example.com --report --format json --fail-on high
 
 - name: Upload report
@@ -347,6 +354,36 @@ examples/sample-report/
   report is written.
 - Target input is never interpolated into a shell command.
 - See [`SECURITY.md`](SECURITY.md) for responsible disclosure.
+
+## Security Scanning
+
+Every push and pull request runs [`.github/workflows/security.yml`](.github/workflows/security.yml),
+covering the codebase, its dependencies, its container image and the repo
+itself — separate from [`ci.yml`](.github/workflows/ci.yml) so security
+status stays independently visible. Findings with SARIF support are
+uploaded to the repository's **Security** tab.
+
+| Category | Tool | What it covers |
+|---|---|---|
+| **SAST** | [Bandit](https://bandit.readthedocs.io/) | Static analysis of `requesttrace/` for insecure Python patterns (blocking) |
+| **SAST** | [CodeQL](https://codeql.github.com/) | Deeper semantic static analysis (best-effort — requires GitHub Advanced Security on private repos) |
+| **SCA** | [pip-audit](https://github.com/pypa/pip-audit) | Python dependencies against the PyPA/OSV vulnerability advisory databases (blocking) |
+| **SCA** | [Trivy](https://trivy.dev/) | Built container image — OS packages + Python deps (blocking) |
+| **License compliance** | [pip-licenses](https://github.com/raimon49/pip-licenses) | Rejects copyleft licenses (GPL/AGPL) incompatible with MIT distribution |
+| **Secret scanning** | [gitleaks](https://github.com/gitleaks/gitleaks) | Full git history for committed credentials/tokens (blocking) |
+| **IaC / container lint** | [hadolint](https://github.com/hadolint/hadolint) | `Dockerfile` best-practice and security lint |
+| **DAST** | RequestTrace itself | RequestTrace has no web frontend of its own for a classic DAST scanner to point at — it *is* a dynamic scanner. The `dast` job runs the built CLI live against a deliberately insecure local HTTP target and asserts it dynamically detects and reports real findings, end to end, the same way it would against a production target. |
+
+Locally:
+
+```bash
+pip install -e ".[dev,pdf,security]"
+bandit -r requesttrace -ll
+pip-audit --desc --skip-editable
+```
+
+[Dependabot](.github/dependabot.yml) opens weekly PRs for pip, Docker base
+image and GitHub Actions updates so patched versions land automatically.
 
 ## Contributing
 

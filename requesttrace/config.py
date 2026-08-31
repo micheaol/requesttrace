@@ -11,7 +11,7 @@ from requesttrace.exit_codes import InvalidInputError
 
 DEFAULT_TIMEOUT_SECONDS = 10.0
 DEFAULT_MAX_REDIRECTS = 10
-DEFAULT_USER_AGENT = "RequestTrace/1.0 (+https://github.com/requesttrace/requesttrace)"
+DEFAULT_USER_AGENT = "RequestTrace/1.0 (+https://github.com/micheaol/requesttrace)"
 DEFAULT_CERT_WARNING_DAYS = 30
 DEFAULT_CERT_CRITICAL_DAYS = 7
 

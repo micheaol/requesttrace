@@ -1,18 +1,18 @@
 {
   "metadata": {
-    "scan_id": "scan-632fbb2389e8",
+    "scan_id": "scan-3ab309de4375",
     "scanner_version": "1.0.0",
     "ruleset_version": "2026.08.1",
     "schema_version": "1.0.0",
     "runtime": "Python 3.13.1 (darwin)",
     "container_image": null,
-    "started_at": "2026-08-31T18:05:00.127699Z",
-    "completed_at": "2026-08-31T18:05:02.880247Z",
+    "started_at": "2026-08-31T19:05:54.377163Z",
+    "completed_at": "2026-08-31T19:05:57.048120Z",
     "config": {
       "timeout_seconds": 10.0,
       "max_redirects": 10,
       "fail_on": "high",
-      "user_agent": "RequestTrace/1.0 (+https://github.com/requesttrace/requesttrace)",
+      "user_agent": "RequestTrace/1.0 (+https://github.com/micheaol/requesttrace)",
       "certificate_warning_days": 30,
       "certificate_critical_days": 7
     }
@@ -29,80 +29,80 @@
   },
   "observations": [
     {
-      "observation_id": "obs-adeab17d529e",
+      "observation_id": "obs-39277ccf6dca",
       "module": "dns",
       "type": "a_records",
       "value": [
         "104.20.23.154",
         "172.66.147.243"
       ],
-      "timestamp": "2026-08-31T18:05:00.219860Z",
+      "timestamp": "2026-08-31T19:05:54.464440Z",
       "confidence": "observed",
       "metadata": {
-        "duration_ms": 89.85102599763195,
+        "duration_ms": 85.58518999780063,
         "record_type": "A"
       }
     },
     {
-      "observation_id": "obs-07f30ea92030",
+      "observation_id": "obs-17bad92d5121",
       "module": "dns",
       "type": "aaaa_records",
       "value": [
         "2606:4700:10::6814:179a",
         "2606:4700:10::ac42:93f3"
       ],
-      "timestamp": "2026-08-31T18:05:00.308651Z",
+      "timestamp": "2026-08-31T19:05:54.553120Z",
       "confidence": "observed",
       "metadata": {
-        "duration_ms": 88.66768200095976,
+        "duration_ms": 88.58034599688835,
         "record_type": "AAAA"
       }
     },
     {
-      "observation_id": "obs-b219855afc8a",
+      "observation_id": "obs-b75b3ecdbd9b",
       "module": "dns",
       "type": "ns_records",
       "value": [
         "elliott.ns.cloudflare.com",
         "hera.ns.cloudflare.com"
       ],
-      "timestamp": "2026-08-31T18:05:00.409188Z",
+      "timestamp": "2026-08-31T19:05:54.649363Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-1efac4bc7bb5",
+      "observation_id": "obs-b68ffa3db1c2",
       "module": "connectivity",
       "type": "tcp_connection",
       "value": {
-        "selected_ip": "104.20.23.154",
+        "selected_ip": "172.66.147.243",
         "port": 443,
         "address_family": "IPv4"
       },
-      "timestamp": "2026-08-31T18:05:00.650633Z",
+      "timestamp": "2026-08-31T19:05:54.888990Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-367f8ecfd84d",
+      "observation_id": "obs-638e992d8e5e",
       "module": "tls",
       "type": "sni",
       "value": "example.com",
-      "timestamp": "2026-08-31T18:05:00.948570Z",
+      "timestamp": "2026-08-31T19:05:55.142587Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-4929d91add88",
+      "observation_id": "obs-3ef4c0de280f",
       "module": "tls",
       "type": "negotiated_protocol",
       "value": "TLSv1.3",
-      "timestamp": "2026-08-31T18:05:00.948643Z",
+      "timestamp": "2026-08-31T19:05:55.142643Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-0d3b20bff6a8",
+      "observation_id": "obs-2cce7a0a0731",
       "module": "tls",
       "type": "negotiated_cipher",
       "value": {
@@ -110,30 +110,30 @@
         "protocol": "TLSv1.3",
         "bits": 256
       },
-      "timestamp": "2026-08-31T18:05:00.948684Z",
+      "timestamp": "2026-08-31T19:05:55.142675Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-9da7179be437",
+      "observation_id": "obs-b8578e7105c7",
       "module": "tls",
       "type": "alpn_protocol",
       "value": "h2",
-      "timestamp": "2026-08-31T18:05:00.948718Z",
+      "timestamp": "2026-08-31T19:05:55.142701Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-da1cc333ee5b",
+      "observation_id": "obs-6dce58ddba00",
       "module": "tls",
       "type": "handshake_duration_ms",
-      "value": 294.73,
-      "timestamp": "2026-08-31T18:05:00.948750Z",
+      "value": 250.38,
+      "timestamp": "2026-08-31T19:05:55.142726Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-8ad6964be70c",
+      "observation_id": "obs-6699848d7699",
       "module": "tls",
       "type": "certificate",
       "value": {
@@ -151,35 +151,35 @@
         "public_key_algorithm": "EC (secp256r1)",
         "public_key_size_bits": 256
       },
-      "timestamp": "2026-08-31T18:05:00.951791Z",
+      "timestamp": "2026-08-31T19:05:55.152742Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-53b98cb0db3b",
+      "observation_id": "obs-086d2a688b74",
       "module": "tls",
       "type": "hostname_match",
       "value": {
         "matches": true,
         "matched_name": "example.com"
       },
-      "timestamp": "2026-08-31T18:05:00.952497Z",
+      "timestamp": "2026-08-31T19:05:55.153569Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-2cdd218ff539",
+      "observation_id": "obs-23b2aeb8a8d5",
       "module": "tls",
       "type": "trust_chain_valid",
       "value": true,
-      "timestamp": "2026-08-31T18:05:01.241621Z",
+      "timestamp": "2026-08-31T19:05:55.436973Z",
       "confidence": "observed",
       "metadata": {
         "failure_category": null
       }
     },
     {
-      "observation_id": "obs-b9b707899e6b",
+      "observation_id": "obs-1cb02046643f",
       "module": "tls",
       "type": "protocol_support",
       "value": {
@@ -206,12 +206,12 @@
           "reason": null
         }
       },
-      "timestamp": "2026-08-31T18:05:02.186184Z",
+      "timestamp": "2026-08-31T19:05:56.343459Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-8c7cd372950d",
+      "observation_id": "obs-df21640091e0",
       "module": "redirects",
       "type": "redirect_chain",
       "value": [
@@ -222,107 +222,107 @@
           "scheme": "https"
         }
       ],
-      "timestamp": "2026-08-31T18:05:02.623730Z",
+      "timestamp": "2026-08-31T19:05:56.775646Z",
       "confidence": "observed",
       "metadata": {
         "hop_count": 1
       }
     },
     {
-      "observation_id": "obs-8cff2ad288f5",
+      "observation_id": "obs-cc910c248ad7",
       "module": "redirects",
       "type": "redirect_loop_detected",
       "value": false,
-      "timestamp": "2026-08-31T18:05:02.623787Z",
+      "timestamp": "2026-08-31T19:05:56.775691Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-5d40e9790e7e",
+      "observation_id": "obs-8a51967af0f5",
       "module": "redirects",
       "type": "https_to_http_downgrade_detected",
       "value": false,
-      "timestamp": "2026-08-31T18:05:02.623826Z",
+      "timestamp": "2026-08-31T19:05:56.775722Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-da816554e0f7",
+      "observation_id": "obs-79205b3e1ec9",
       "module": "http",
       "type": "final_url",
       "value": "https://example.com/",
-      "timestamp": "2026-08-31T18:05:02.623889Z",
+      "timestamp": "2026-08-31T19:05:56.775775Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-0296601d2c12",
+      "observation_id": "obs-5a9f5d351040",
       "module": "http",
       "type": "status_code",
       "value": 200,
-      "timestamp": "2026-08-31T18:05:02.623937Z",
+      "timestamp": "2026-08-31T19:05:56.775811Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-53783e063758",
+      "observation_id": "obs-c7659acdb9ec",
       "module": "http",
       "type": "http_version",
       "value": "HTTP/1.1",
-      "timestamp": "2026-08-31T18:05:02.623970Z",
+      "timestamp": "2026-08-31T19:05:56.775838Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-8daa7e619b69",
+      "observation_id": "obs-ceba29b1c8a3",
       "module": "http",
       "type": "content_type",
       "value": "text/html",
-      "timestamp": "2026-08-31T18:05:02.624004Z",
+      "timestamp": "2026-08-31T19:05:56.775865Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-32ee254b7938",
+      "observation_id": "obs-5919a4fa47c3",
       "module": "http",
       "type": "ttfb_ms",
-      "value": 425.95,
-      "timestamp": "2026-08-31T18:05:02.624037Z",
+      "value": 423.07,
+      "timestamp": "2026-08-31T19:05:56.775892Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-dceba3848bb1",
+      "observation_id": "obs-507a8be54c88",
       "module": "http",
       "type": "total_duration_ms",
-      "value": 437.25,
-      "timestamp": "2026-08-31T18:05:02.624068Z",
+      "value": 431.96,
+      "timestamp": "2026-08-31T19:05:56.775917Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-722173b3970b",
+      "observation_id": "obs-0cdae0cac9c5",
       "module": "http",
       "type": "response_headers",
       "value": {
-        "Date": "Mon, 31 Aug 2026 18:05:03 GMT",
+        "Date": "Mon, 31 Aug 2026 19:05:57 GMT",
         "Content-Type": "text/html",
         "Transfer-Encoding": "chunked",
         "Connection": "keep-alive",
         "Server": "cloudflare",
         "last-modified": "Mon, 31 Aug 2026 04:09:32 GMT",
         "allow": "GET, HEAD",
-        "Age": "3042",
+        "Age": "6696",
         "cf-cache-status": "HIT",
         "Content-Encoding": "gzip",
-        "CF-RAY": "a33df60df8530e74-AMS"
+        "CF-RAY": "a33e4f447cb90e00-AMS"
       },
-      "timestamp": "2026-08-31T18:05:02.624097Z",
+      "timestamp": "2026-08-31T19:05:56.775942Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-2f344a21378d",
+      "observation_id": "obs-2c09295a7e82",
       "module": "headers",
       "type": "hsts",
       "value": {
@@ -332,12 +332,12 @@
         "include_subdomains": false,
         "preload": false
       },
-      "timestamp": "2026-08-31T18:05:02.624154Z",
+      "timestamp": "2026-08-31T19:05:56.775988Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-c52627ddf298",
+      "observation_id": "obs-9e7d154a0b3f",
       "module": "headers",
       "type": "content_security_policy",
       "value": {
@@ -345,12 +345,12 @@
         "raw": null,
         "high_risk_patterns": []
       },
-      "timestamp": "2026-08-31T18:05:02.624202Z",
+      "timestamp": "2026-08-31T19:05:56.776019Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-bf3584c6918a",
+      "observation_id": "obs-4ca420ad2da4",
       "module": "headers",
       "type": "x_content_type_options",
       "value": {
@@ -358,24 +358,24 @@
         "value": null,
         "valid_nosniff": false
       },
-      "timestamp": "2026-08-31T18:05:02.624237Z",
+      "timestamp": "2026-08-31T19:05:56.776047Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-ece129410431",
+      "observation_id": "obs-b765750cf2c2",
       "module": "headers",
       "type": "referrer_policy",
       "value": {
         "present": false,
         "value": null
       },
-      "timestamp": "2026-08-31T18:05:02.624269Z",
+      "timestamp": "2026-08-31T19:05:56.776079Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-499071818338",
+      "observation_id": "obs-78325661e6c7",
       "module": "headers",
       "type": "frame_protection",
       "value": {
@@ -384,33 +384,33 @@
         "x_frame_options_value": null,
         "protected": false
       },
-      "timestamp": "2026-08-31T18:05:02.624303Z",
+      "timestamp": "2026-08-31T19:05:56.776107Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-de461fdecd1f",
+      "observation_id": "obs-8dbf2685c245",
       "module": "headers",
       "type": "permissions_policy",
       "value": {
         "present": false,
         "value": null
       },
-      "timestamp": "2026-08-31T18:05:02.624336Z",
+      "timestamp": "2026-08-31T19:05:56.776132Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-58430691ee20",
+      "observation_id": "obs-447e10a27531",
       "module": "cookies",
       "type": "cookies_present",
       "value": false,
-      "timestamp": "2026-08-31T18:05:02.624372Z",
+      "timestamp": "2026-08-31T19:05:56.776161Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-0d01d637e8da",
+      "observation_id": "obs-67a44c7bfcf1",
       "module": "http",
       "type": "http_to_https_redirect",
       "value": {
@@ -419,12 +419,12 @@
         "location": null,
         "redirects_to_https": false
       },
-      "timestamp": "2026-08-31T18:05:02.878974Z",
+      "timestamp": "2026-08-31T19:05:57.047167Z",
       "confidence": "observed",
       "metadata": {}
     },
     {
-      "observation_id": "obs-5d48ffe0d90c",
+      "observation_id": "obs-3f5570a0d16b",
       "module": "edge",
       "type": "edge_provider_indicators",
       "value": {
@@ -442,17 +442,17 @@
         ],
         "unknown": false
       },
-      "timestamp": "2026-08-31T18:05:02.879210Z",
+      "timestamp": "2026-08-31T19:05:57.047349Z",
       "confidence": "high",
       "metadata": {}
     }
   ],
   "evidence": [
     {
-      "evidence_id": "ev-28539df5d1f0",
-      "observation_id": "obs-adeab17d529e",
+      "evidence_id": "ev-b0e98c8d63a6",
+      "observation_id": "obs-39277ccf6dca",
       "module": "dns",
-      "timestamp": "2026-08-31T18:05:00.219860Z",
+      "timestamp": "2026-08-31T19:05:54.464440Z",
       "normalized_value": [
         "104.20.23.154",
         "172.66.147.243"
@@ -464,14 +464,14 @@
           "104.20.23.154",
           "172.66.147.243"
         ],
-        "duration_ms": 89.85102599763195
+        "duration_ms": 85.58518999780063
       }
     },
     {
-      "evidence_id": "ev-3882d5e39ccb",
-      "observation_id": "obs-07f30ea92030",
+      "evidence_id": "ev-b468b6be82fe",
+      "observation_id": "obs-17bad92d5121",
       "module": "dns",
-      "timestamp": "2026-08-31T18:05:00.308651Z",
+      "timestamp": "2026-08-31T19:05:54.553120Z",
       "normalized_value": [
         "2606:4700:10::6814:179a",
         "2606:4700:10::ac42:93f3"
@@ -483,14 +483,14 @@
           "2606:4700:10::6814:179a",
           "2606:4700:10::ac42:93f3"
         ],
-        "duration_ms": 88.66768200095976
+        "duration_ms": 88.58034599688835
       }
     },
     {
-      "evidence_id": "ev-899c235ecc77",
-      "observation_id": "obs-b219855afc8a",
+      "evidence_id": "ev-f93ef2773f85",
+      "observation_id": "obs-b75b3ecdbd9b",
       "module": "dns",
-      "timestamp": "2026-08-31T18:05:00.409188Z",
+      "timestamp": "2026-08-31T19:05:54.649363Z",
       "normalized_value": [
         "elliott.ns.cloudflare.com",
         "hera.ns.cloudflare.com"
@@ -505,29 +505,29 @@
       }
     },
     {
-      "evidence_id": "ev-548d8aa0c103",
-      "observation_id": "obs-1efac4bc7bb5",
+      "evidence_id": "ev-0c3009ddd524",
+      "observation_id": "obs-b68ffa3db1c2",
       "module": "connectivity",
-      "timestamp": "2026-08-31T18:05:00.650633Z",
+      "timestamp": "2026-08-31T19:05:54.888990Z",
       "normalized_value": {
-        "selected_ip": "104.20.23.154",
+        "selected_ip": "172.66.147.243",
         "port": 443,
         "address_family": "IPv4"
       },
       "source_method": "socket.create_connection",
       "confidence": "observed",
       "sanitized_raw": {
-        "selected_ip": "104.20.23.154",
+        "selected_ip": "172.66.147.243",
         "port": 443,
         "address_family": "IPv4",
-        "duration_ms": 241.19168100151
+        "duration_ms": 239.43240999506088
       }
     },
     {
-      "evidence_id": "ev-fe31fba22597",
-      "observation_id": "obs-367f8ecfd84d",
+      "evidence_id": "ev-36e45e728057",
+      "observation_id": "obs-638e992d8e5e",
       "module": "tls",
-      "timestamp": "2026-08-31T18:05:00.948570Z",
+      "timestamp": "2026-08-31T19:05:55.142587Z",
       "normalized_value": "example.com",
       "source_method": "ssl.SSLContext.wrap_socket",
       "confidence": "observed",
@@ -536,10 +536,10 @@
       }
     },
     {
-      "evidence_id": "ev-dff72c357ea8",
-      "observation_id": "obs-4929d91add88",
+      "evidence_id": "ev-bd0c11fadcaf",
+      "observation_id": "obs-3ef4c0de280f",
       "module": "tls",
-      "timestamp": "2026-08-31T18:05:00.948643Z",
+      "timestamp": "2026-08-31T19:05:55.142643Z",
       "normalized_value": "TLSv1.3",
       "source_method": "ssl.SSLContext.wrap_socket",
       "confidence": "observed",
@@ -548,10 +548,10 @@
       }
     },
     {
-      "evidence_id": "ev-8481a2634594",
-      "observation_id": "obs-0d3b20bff6a8",
+      "evidence_id": "ev-848101da10d4",
+      "observation_id": "obs-2cce7a0a0731",
       "module": "tls",
-      "timestamp": "2026-08-31T18:05:00.948684Z",
+      "timestamp": "2026-08-31T19:05:55.142675Z",
       "normalized_value": {
         "name": "TLS_AES_256_GCM_SHA384",
         "protocol": "TLSv1.3",
@@ -568,10 +568,10 @@
       }
     },
     {
-      "evidence_id": "ev-e8f00babee81",
-      "observation_id": "obs-9da7179be437",
+      "evidence_id": "ev-ced208363b25",
+      "observation_id": "obs-b8578e7105c7",
       "module": "tls",
-      "timestamp": "2026-08-31T18:05:00.948718Z",
+      "timestamp": "2026-08-31T19:05:55.142701Z",
       "normalized_value": "h2",
       "source_method": "ssl.SSLContext.wrap_socket",
       "confidence": "observed",
@@ -580,22 +580,22 @@
       }
     },
     {
-      "evidence_id": "ev-86f93ec131e6",
-      "observation_id": "obs-da1cc333ee5b",
+      "evidence_id": "ev-3a82ad5ce52c",
+      "observation_id": "obs-6dce58ddba00",
       "module": "tls",
-      "timestamp": "2026-08-31T18:05:00.948750Z",
-      "normalized_value": 294.73,
+      "timestamp": "2026-08-31T19:05:55.142726Z",
+      "normalized_value": 250.38,
       "source_method": "ssl.SSLContext.wrap_socket",
       "confidence": "observed",
       "sanitized_raw": {
-        "value": 294.73
+        "value": 250.38
       }
     },
     {
-      "evidence_id": "ev-d05c2e91fc53",
-      "observation_id": "obs-8ad6964be70c",
+      "evidence_id": "ev-e3448a01a208",
+      "observation_id": "obs-6699848d7699",
       "module": "tls",
-      "timestamp": "2026-08-31T18:05:00.951791Z",
+      "timestamp": "2026-08-31T19:05:55.152742Z",
       "normalized_value": {
         "subject": "CN=example.com",
         "issuer": "CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US",
@@ -619,10 +619,10 @@
       }
     },
     {
-      "evidence_id": "ev-1d9210b4d15e",
-      "observation_id": "obs-53b98cb0db3b",
+      "evidence_id": "ev-9ff8a7afa391",
+      "observation_id": "obs-086d2a688b74",
       "module": "tls",
-      "timestamp": "2026-08-31T18:05:00.952497Z",
+      "timestamp": "2026-08-31T19:05:55.153569Z",
       "normalized_value": {
         "matches": true,
         "matched_name": "example.com"
@@ -635,10 +635,10 @@
       }
     },
     {
-      "evidence_id": "ev-591b74a6d49d",
-      "observation_id": "obs-2cdd218ff539",
+      "evidence_id": "ev-3ec5a93a04e3",
+      "observation_id": "obs-23b2aeb8a8d5",
       "module": "tls",
-      "timestamp": "2026-08-31T18:05:01.241621Z",
+      "timestamp": "2026-08-31T19:05:55.436973Z",
       "normalized_value": true,
       "source_method": "ssl.create_default_context (system trust store)",
       "confidence": "observed",
@@ -648,10 +648,10 @@
       }
     },
     {
-      "evidence_id": "ev-e89eb52d962c",
-      "observation_id": "obs-b9b707899e6b",
+      "evidence_id": "ev-600e2d19621f",
+      "observation_id": "obs-1cb02046643f",
       "module": "tls",
-      "timestamp": "2026-08-31T18:05:02.186184Z",
+      "timestamp": "2026-08-31T19:05:56.343459Z",
       "normalized_value": {
         "TLS 1.0": {
           "tested": true,
@@ -706,10 +706,10 @@
       }
     },
     {
-      "evidence_id": "ev-aa2e722c3069",
-      "observation_id": "obs-8c7cd372950d",
+      "evidence_id": "ev-cb97b0264d93",
+      "observation_id": "obs-df21640091e0",
       "module": "redirects",
-      "timestamp": "2026-08-31T18:05:02.623730Z",
+      "timestamp": "2026-08-31T19:05:56.775646Z",
       "normalized_value": [
         {
           "url": "https://example.com/",
@@ -732,10 +732,10 @@
       }
     },
     {
-      "evidence_id": "ev-1a91cddf51ae",
-      "observation_id": "obs-8cff2ad288f5",
+      "evidence_id": "ev-bb68168c1ec1",
+      "observation_id": "obs-cc910c248ad7",
       "module": "redirects",
-      "timestamp": "2026-08-31T18:05:02.623787Z",
+      "timestamp": "2026-08-31T19:05:56.775691Z",
       "normalized_value": false,
       "source_method": "redirect_analyzer.analyze_redirect_chain",
       "confidence": "observed",
@@ -744,10 +744,10 @@
       }
     },
     {
-      "evidence_id": "ev-fc9f7c026a0e",
-      "observation_id": "obs-5d40e9790e7e",
+      "evidence_id": "ev-ba440b8ca427",
+      "observation_id": "obs-8a51967af0f5",
       "module": "redirects",
-      "timestamp": "2026-08-31T18:05:02.623826Z",
+      "timestamp": "2026-08-31T19:05:56.775722Z",
       "normalized_value": false,
       "source_method": "redirect_analyzer.analyze_redirect_chain",
       "confidence": "observed",
@@ -756,10 +756,10 @@
       }
     },
     {
-      "evidence_id": "ev-59441404ebe8",
-      "observation_id": "obs-da816554e0f7",
+      "evidence_id": "ev-e187c6a6c78b",
+      "observation_id": "obs-79205b3e1ec9",
       "module": "http",
-      "timestamp": "2026-08-31T18:05:02.623889Z",
+      "timestamp": "2026-08-31T19:05:56.775775Z",
       "normalized_value": "https://example.com/",
       "source_method": "requests.Session.get",
       "confidence": "observed",
@@ -768,10 +768,10 @@
       }
     },
     {
-      "evidence_id": "ev-93ffe220b412",
-      "observation_id": "obs-0296601d2c12",
+      "evidence_id": "ev-c7e7923c5120",
+      "observation_id": "obs-5a9f5d351040",
       "module": "http",
-      "timestamp": "2026-08-31T18:05:02.623937Z",
+      "timestamp": "2026-08-31T19:05:56.775811Z",
       "normalized_value": 200,
       "source_method": "requests.Session.get",
       "confidence": "observed",
@@ -780,10 +780,10 @@
       }
     },
     {
-      "evidence_id": "ev-c6c8ccf5b24a",
-      "observation_id": "obs-53783e063758",
+      "evidence_id": "ev-1fc19dd1dd0d",
+      "observation_id": "obs-c7659acdb9ec",
       "module": "http",
-      "timestamp": "2026-08-31T18:05:02.623970Z",
+      "timestamp": "2026-08-31T19:05:56.775838Z",
       "normalized_value": "HTTP/1.1",
       "source_method": "requests.Session.get",
       "confidence": "observed",
@@ -792,10 +792,10 @@
       }
     },
     {
-      "evidence_id": "ev-b3850e065c70",
-      "observation_id": "obs-8daa7e619b69",
+      "evidence_id": "ev-a6dee08b88a1",
+      "observation_id": "obs-ceba29b1c8a3",
       "module": "http",
-      "timestamp": "2026-08-31T18:05:02.624004Z",
+      "timestamp": "2026-08-31T19:05:56.775865Z",
       "normalized_value": "text/html",
       "source_method": "requests.Session.get",
       "confidence": "observed",
@@ -804,70 +804,70 @@
       }
     },
     {
-      "evidence_id": "ev-4e2772693368",
-      "observation_id": "obs-32ee254b7938",
+      "evidence_id": "ev-bb957787f971",
+      "observation_id": "obs-5919a4fa47c3",
       "module": "http",
-      "timestamp": "2026-08-31T18:05:02.624037Z",
-      "normalized_value": 425.95,
+      "timestamp": "2026-08-31T19:05:56.775892Z",
+      "normalized_value": 423.07,
       "source_method": "requests.Session.get",
       "confidence": "observed",
       "sanitized_raw": {
-        "value": 425.95
+        "value": 423.07
       }
     },
     {
-      "evidence_id": "ev-76d25ddf8585",
-      "observation_id": "obs-dceba3848bb1",
+      "evidence_id": "ev-86757d889320",
+      "observation_id": "obs-507a8be54c88",
       "module": "http",
-      "timestamp": "2026-08-31T18:05:02.624068Z",
-      "normalized_value": 437.25,
+      "timestamp": "2026-08-31T19:05:56.775917Z",
+      "normalized_value": 431.96,
       "source_method": "requests.Session.get",
       "confidence": "observed",
       "sanitized_raw": {
-        "value": 437.25
+        "value": 431.96
       }
     },
     {
-      "evidence_id": "ev-fe92ee3f17ca",
-      "observation_id": "obs-722173b3970b",
+      "evidence_id": "ev-f06b2eb0975a",
+      "observation_id": "obs-0cdae0cac9c5",
       "module": "http",
-      "timestamp": "2026-08-31T18:05:02.624097Z",
+      "timestamp": "2026-08-31T19:05:56.775942Z",
       "normalized_value": {
-        "Date": "Mon, 31 Aug 2026 18:05:03 GMT",
+        "Date": "Mon, 31 Aug 2026 19:05:57 GMT",
         "Content-Type": "text/html",
         "Transfer-Encoding": "chunked",
         "Connection": "keep-alive",
         "Server": "cloudflare",
         "last-modified": "Mon, 31 Aug 2026 04:09:32 GMT",
         "allow": "GET, HEAD",
-        "Age": "3042",
+        "Age": "6696",
         "cf-cache-status": "HIT",
         "Content-Encoding": "gzip",
-        "CF-RAY": "a33df60df8530e74-AMS"
+        "CF-RAY": "a33e4f447cb90e00-AMS"
       },
       "source_method": "requests.Session.get",
       "confidence": "observed",
       "sanitized_raw": {
         "value": {
-          "Date": "Mon, 31 Aug 2026 18:05:03 GMT",
+          "Date": "Mon, 31 Aug 2026 19:05:57 GMT",
           "Content-Type": "text/html",
           "Transfer-Encoding": "chunked",
           "Connection": "keep-alive",
           "Server": "cloudflare",
           "last-modified": "Mon, 31 Aug 2026 04:09:32 GMT",
           "allow": "GET, HEAD",
-          "Age": "3042",
+          "Age": "6696",
           "cf-cache-status": "HIT",
           "Content-Encoding": "gzip",
-          "CF-RAY": "a33df60df8530e74-AMS"
+          "CF-RAY": "a33e4f447cb90e00-AMS"
         }
       }
     },
     {
-      "evidence_id": "ev-ebd87750e152",
-      "observation_id": "obs-2f344a21378d",
+      "evidence_id": "ev-0d5d8b8cd588",
+      "observation_id": "obs-2c09295a7e82",
       "module": "headers",
-      "timestamp": "2026-08-31T18:05:02.624154Z",
+      "timestamp": "2026-08-31T19:05:56.775988Z",
       "normalized_value": {
         "present": false,
         "raw": null,
@@ -888,10 +888,10 @@
       }
     },
     {
-      "evidence_id": "ev-4dac4929dabb",
-      "observation_id": "obs-c52627ddf298",
+      "evidence_id": "ev-4edbd532c0e1",
+      "observation_id": "obs-9e7d154a0b3f",
       "module": "headers",
-      "timestamp": "2026-08-31T18:05:02.624202Z",
+      "timestamp": "2026-08-31T19:05:56.776019Z",
       "normalized_value": {
         "present": false,
         "raw": null,
@@ -908,10 +908,10 @@
       }
     },
     {
-      "evidence_id": "ev-5dc311c540f1",
-      "observation_id": "obs-bf3584c6918a",
+      "evidence_id": "ev-f7d4ecb09d69",
+      "observation_id": "obs-4ca420ad2da4",
       "module": "headers",
-      "timestamp": "2026-08-31T18:05:02.624237Z",
+      "timestamp": "2026-08-31T19:05:56.776047Z",
       "normalized_value": {
         "present": false,
         "value": null,
@@ -928,10 +928,10 @@
       }
     },
     {
-      "evidence_id": "ev-e1048b950453",
-      "observation_id": "obs-ece129410431",
+      "evidence_id": "ev-f28369a63ec8",
+      "observation_id": "obs-b765750cf2c2",
       "module": "headers",
-      "timestamp": "2026-08-31T18:05:02.624269Z",
+      "timestamp": "2026-08-31T19:05:56.776079Z",
       "normalized_value": {
         "present": false,
         "value": null
@@ -946,10 +946,10 @@
       }
     },
     {
-      "evidence_id": "ev-0934bf597d6c",
-      "observation_id": "obs-499071818338",
+      "evidence_id": "ev-aa3ffcbc2c5e",
+      "observation_id": "obs-78325661e6c7",
       "module": "headers",
-      "timestamp": "2026-08-31T18:05:02.624303Z",
+      "timestamp": "2026-08-31T19:05:56.776107Z",
       "normalized_value": {
         "csp_frame_ancestors_present": false,
         "x_frame_options_present": false,
@@ -968,10 +968,10 @@
       }
     },
     {
-      "evidence_id": "ev-20192290939f",
-      "observation_id": "obs-de461fdecd1f",
+      "evidence_id": "ev-a398077e898b",
+      "observation_id": "obs-8dbf2685c245",
       "module": "headers",
-      "timestamp": "2026-08-31T18:05:02.624336Z",
+      "timestamp": "2026-08-31T19:05:56.776132Z",
       "normalized_value": {
         "present": false,
         "value": null
@@ -986,10 +986,10 @@
       }
     },
     {
-      "evidence_id": "ev-061375818439",
-      "observation_id": "obs-0d01d637e8da",
+      "evidence_id": "ev-24acc7bc8154",
+      "observation_id": "obs-67a44c7bfcf1",
       "module": "http",
-      "timestamp": "2026-08-31T18:05:02.878974Z",
+      "timestamp": "2026-08-31T19:05:57.047167Z",
       "normalized_value": {
         "probed_url": "http://example.com/",
         "status_code": 200,
@@ -1004,10 +1004,10 @@
       }
     },
     {
-      "evidence_id": "ev-844910055440",
-      "observation_id": "obs-5d48ffe0d90c",
+      "evidence_id": "ev-a53735358664",
+      "observation_id": "obs-3f5570a0d16b",
       "module": "edge",
-      "timestamp": "2026-08-31T18:05:02.879210Z",
+      "timestamp": "2026-08-31T19:05:57.047349Z",
       "normalized_value": {
         "matches": [
           {
@@ -1046,7 +1046,7 @@
   ],
   "findings": [
     {
-      "finding_id": "finding-6e4f23eb1b93",
+      "finding_id": "finding-aa816a7c6968",
       "rule_id": "RT-HTTP-002",
       "title": "Plain HTTP requests are not redirected to HTTPS",
       "severity": "high",
@@ -1054,7 +1054,7 @@
       "affected_asset": "example.com",
       "description": "A request to http://example.com/ returned status 200 without redirecting to HTTPS.",
       "evidence_ids": [
-        "ev-061375818439"
+        "ev-24acc7bc8154"
       ],
       "security_impact": "Clients that reach the site over plain HTTP (bookmarks, typed URLs, old links) will transmit requests in plaintext instead of being upgraded to a secure channel.",
       "recommendation": "Redirect all plain-HTTP requests to the HTTPS equivalent (301/308).",
@@ -1064,7 +1064,7 @@
       "references": []
     },
     {
-      "finding_id": "finding-ccdb1a2fd948",
+      "finding_id": "finding-faf91ce2f416",
       "rule_id": "RT-HDR-001",
       "title": "Missing Strict-Transport-Security (HSTS) header",
       "severity": "high",
@@ -1072,7 +1072,7 @@
       "affected_asset": "example.com",
       "description": "No Strict-Transport-Security header was present on the HTTPS response.",
       "evidence_ids": [
-        "ev-ebd87750e152"
+        "ev-0d5d8b8cd588"
       ],
       "security_impact": "Without HSTS, browsers may still attempt plain-HTTP connections first, leaving an opening for SSL-stripping style downgrade attacks.",
       "recommendation": "Send a Strict-Transport-Security header with a long max-age on every HTTPS response.",
@@ -1082,7 +1082,7 @@
       "references": []
     },
     {
-      "finding_id": "finding-a06829568b3a",
+      "finding_id": "finding-d51667cb0ef0",
       "rule_id": "RT-HDR-002",
       "title": "Missing Content-Security-Policy header",
       "severity": "medium",
@@ -1090,7 +1090,7 @@
       "affected_asset": "example.com",
       "description": "No Content-Security-Policy header was present on the response.",
       "evidence_ids": [
-        "ev-4dac4929dabb"
+        "ev-4edbd532c0e1"
       ],
       "security_impact": "Without CSP, the browser has no defense-in-depth restriction on script/resource sources, increasing the impact of any XSS.",
       "recommendation": "Deploy a Content-Security-Policy appropriate to the application's actual resource needs.",
@@ -1100,7 +1100,7 @@
       "references": []
     },
     {
-      "finding_id": "finding-232ebba16077",
+      "finding_id": "finding-ba605c7e89ff",
       "rule_id": "RT-HDR-003",
       "title": "Missing or invalid X-Content-Type-Options header",
       "severity": "low",
@@ -1108,7 +1108,7 @@
       "affected_asset": "example.com",
       "description": "X-Content-Type-Options: nosniff was not present (or had an unexpected value).",
       "evidence_ids": [
-        "ev-5dc311c540f1"
+        "ev-f7d4ecb09d69"
       ],
       "security_impact": "Without nosniff, some browsers may MIME-sniff responses, which can enable content-type confusion attacks.",
       "recommendation": "Send X-Content-Type-Options: nosniff on all responses.",
@@ -1118,7 +1118,7 @@
       "references": []
     },
     {
-      "finding_id": "finding-35ef28a78902",
+      "finding_id": "finding-fa0f88cb6a29",
       "rule_id": "RT-HDR-004",
       "title": "Missing Referrer-Policy header",
       "severity": "low",
@@ -1126,7 +1126,7 @@
       "affected_asset": "example.com",
       "description": "No Referrer-Policy header was present on the response.",
       "evidence_ids": [
-        "ev-e1048b950453"
+        "ev-f28369a63ec8"
       ],
       "security_impact": "Without an explicit policy, full referrer URLs (potentially including sensitive query parameters) may leak to third-party destinations.",
       "recommendation": "Set an explicit, minimal Referrer-Policy such as strict-origin-when-cross-origin.",
@@ -1136,7 +1136,7 @@
       "references": []
     },
     {
-      "finding_id": "finding-41481a1ae51e",
+      "finding_id": "finding-92d0c91ebf7e",
       "rule_id": "RT-HDR-005",
       "title": "Missing clickjacking / frame protection",
       "severity": "medium",
@@ -1144,7 +1144,7 @@
       "affected_asset": "example.com",
       "description": "Neither a CSP frame-ancestors directive nor an X-Frame-Options header was present.",
       "evidence_ids": [
-        "ev-0934bf597d6c"
+        "ev-aa3ffcbc2c5e"
       ],
       "security_impact": "The page can be embedded in an attacker-controlled iframe, enabling clickjacking-style UI redress attacks.",
       "recommendation": "Set CSP frame-ancestors (preferred) or X-Frame-Options to restrict framing.",
@@ -1158,93 +1158,93 @@
     {
       "module": "dns",
       "status": "completed",
-      "duration_ms": 279.31350899962126,
+      "duration_ms": 270.602606004104,
       "observation_ids": [
-        "obs-adeab17d529e",
-        "ev-28539df5d1f0",
-        "obs-07f30ea92030",
-        "ev-3882d5e39ccb",
-        "obs-b219855afc8a",
-        "ev-899c235ecc77"
+        "obs-39277ccf6dca",
+        "ev-b0e98c8d63a6",
+        "obs-17bad92d5121",
+        "ev-b468b6be82fe",
+        "obs-b75b3ecdbd9b",
+        "ev-f93ef2773f85"
       ],
       "errors": []
     },
     {
       "module": "connectivity",
       "status": "completed",
-      "duration_ms": 241.19168100151,
+      "duration_ms": 239.43240999506088,
       "observation_ids": [
-        "obs-1efac4bc7bb5",
-        "ev-548d8aa0c103"
+        "obs-b68ffa3db1c2",
+        "ev-0c3009ddd524"
       ],
       "errors": []
     },
     {
       "module": "tls",
       "status": "completed",
-      "duration_ms": 1535.4908410008647,
+      "duration_ms": 1454.4244009957765,
       "observation_ids": [
-        "obs-367f8ecfd84d",
-        "ev-fe31fba22597",
-        "obs-4929d91add88",
-        "ev-dff72c357ea8",
-        "obs-0d3b20bff6a8",
-        "ev-8481a2634594",
-        "obs-9da7179be437",
-        "ev-e8f00babee81",
-        "obs-da1cc333ee5b",
-        "ev-86f93ec131e6",
-        "obs-8ad6964be70c",
-        "ev-d05c2e91fc53",
-        "obs-53b98cb0db3b",
-        "ev-1d9210b4d15e",
-        "obs-2cdd218ff539",
-        "ev-591b74a6d49d",
-        "obs-b9b707899e6b",
-        "ev-e89eb52d962c"
+        "obs-638e992d8e5e",
+        "ev-36e45e728057",
+        "obs-3ef4c0de280f",
+        "ev-bd0c11fadcaf",
+        "obs-2cce7a0a0731",
+        "ev-848101da10d4",
+        "obs-b8578e7105c7",
+        "ev-ced208363b25",
+        "obs-6dce58ddba00",
+        "ev-3a82ad5ce52c",
+        "obs-6699848d7699",
+        "ev-e3448a01a208",
+        "obs-086d2a688b74",
+        "ev-9ff8a7afa391",
+        "obs-23b2aeb8a8d5",
+        "ev-3ec5a93a04e3",
+        "obs-1cb02046643f",
+        "ev-600e2d19621f"
       ],
       "errors": []
     },
     {
       "module": "http",
       "status": "completed",
-      "duration_ms": 692.7852509979857,
+      "duration_ms": 703.6872230019071,
       "observation_ids": [
-        "obs-8c7cd372950d",
-        "ev-aa2e722c3069",
-        "obs-8cff2ad288f5",
-        "ev-1a91cddf51ae",
-        "obs-5d40e9790e7e",
-        "ev-fc9f7c026a0e",
-        "obs-da816554e0f7",
-        "ev-59441404ebe8",
-        "obs-0296601d2c12",
-        "ev-93ffe220b412",
-        "obs-53783e063758",
-        "ev-c6c8ccf5b24a",
-        "obs-8daa7e619b69",
-        "ev-b3850e065c70",
-        "obs-32ee254b7938",
-        "ev-4e2772693368",
-        "obs-dceba3848bb1",
-        "ev-76d25ddf8585",
-        "obs-722173b3970b",
-        "ev-fe92ee3f17ca",
-        "obs-2f344a21378d",
-        "ev-ebd87750e152",
-        "obs-c52627ddf298",
-        "ev-4dac4929dabb",
-        "obs-bf3584c6918a",
-        "ev-5dc311c540f1",
-        "obs-ece129410431",
-        "ev-e1048b950453",
-        "obs-499071818338",
-        "ev-0934bf597d6c",
-        "obs-de461fdecd1f",
-        "ev-20192290939f",
-        "obs-58430691ee20",
-        "obs-0d01d637e8da",
-        "ev-061375818439"
+        "obs-df21640091e0",
+        "ev-cb97b0264d93",
+        "obs-cc910c248ad7",
+        "ev-bb68168c1ec1",
+        "obs-8a51967af0f5",
+        "ev-ba440b8ca427",
+        "obs-79205b3e1ec9",
+        "ev-e187c6a6c78b",
+        "obs-5a9f5d351040",
+        "ev-c7e7923c5120",
+        "obs-c7659acdb9ec",
+        "ev-1fc19dd1dd0d",
+        "obs-ceba29b1c8a3",
+        "ev-a6dee08b88a1",
+        "obs-5919a4fa47c3",
+        "ev-bb957787f971",
+        "obs-507a8be54c88",
+        "ev-86757d889320",
+        "obs-0cdae0cac9c5",
+        "ev-f06b2eb0975a",
+        "obs-2c09295a7e82",
+        "ev-0d5d8b8cd588",
+        "obs-9e7d154a0b3f",
+        "ev-4edbd532c0e1",
+        "obs-4ca420ad2da4",
+        "ev-f7d4ecb09d69",
+        "obs-b765750cf2c2",
+        "ev-f28369a63ec8",
+        "obs-78325661e6c7",
+        "ev-aa3ffcbc2c5e",
+        "obs-8dbf2685c245",
+        "ev-a398077e898b",
+        "obs-447e10a27531",
+        "obs-67a44c7bfcf1",
+        "ev-24acc7bc8154"
       ],
       "errors": []
     },
@@ -1253,8 +1253,8 @@
       "status": "completed",
       "duration_ms": 0.0,
       "observation_ids": [
-        "obs-5d48ffe0d90c",
-        "ev-844910055440"
+        "obs-3f5570a0d16b",
+        "ev-a53735358664"
       ],
       "errors": []
     }

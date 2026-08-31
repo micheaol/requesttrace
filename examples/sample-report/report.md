@@ -1,9 +1,9 @@
 # RequestTrace Security Assessment Report
 
 **Target:** https://example.com/
-**Scan ID:** scan-632fbb2389e8
-**Started:** 2026-08-31 18:05:00.127699+00:00
-**Completed:** 2026-08-31 18:05:02.880247+00:00
+**Scan ID:** scan-3ab309de4375
+**Started:** 2026-08-31 19:05:54.377163+00:00
+**Completed:** 2026-08-31 19:05:57.048120+00:00
 **Scanner Version:** 1.0.0 · **Ruleset:** 2026.08.1 · **Schema:** 1.0.0
 **Runtime:** Python 3.13.1 (darwin)
 
@@ -40,24 +40,24 @@ RequestTrace observes only what is externally visible. It cannot see internal se
 
 ## 6. DNS Assessment
 
-- Status: **completed** (279.31 ms)
+- Status: **completed** (270.6 ms)
 - `a_records`: ['104.20.23.154', '172.66.147.243']
 - `aaaa_records`: ['2606:4700:10::6814:179a', '2606:4700:10::ac42:93f3']
 - `ns_records`: ['elliott.ns.cloudflare.com', 'hera.ns.cloudflare.com']
 
 ## 7. Connectivity Assessment
 
-- Status: **completed** (241.19 ms)
-- `tcp_connection`: {'selected_ip': '104.20.23.154', 'port': 443, 'address_family': 'IPv4'}
+- Status: **completed** (239.43 ms)
+- `tcp_connection`: {'selected_ip': '172.66.147.243', 'port': 443, 'address_family': 'IPv4'}
 
 ## 8. TLS Security Assessment
 
-- Status: **completed** (1535.49 ms)
+- Status: **completed** (1454.42 ms)
 - `sni`: example.com
 - `negotiated_protocol`: TLSv1.3
 - `negotiated_cipher`: {'name': 'TLS_AES_256_GCM_SHA384', 'protocol': 'TLSv1.3', 'bits': 256}
 - `alpn_protocol`: h2
-- `handshake_duration_ms`: 294.73
+- `handshake_duration_ms`: 250.38
 - `certificate`: {'subject': 'CN=example.com', 'issuer': 'CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US', 'subject_alternative_names': ['example.com', '*.example.com'], 'not_valid_before': '2026-07-29T22:10:08+00:00', 'not_valid_after': '2026-10-27T22:17:21+00:00', 'days_remaining': 57, 'fingerprint_sha256': '6153a96fd1a6ab7f4d438fc34932484299d0729d9140b3a126bb2f9c07b02200', 'signature_algorithm': 'ecdsa-with-SHA256', 'public_key_algorithm': 'EC (secp256r1)', 'public_key_size_bits': 256}
 - `hostname_match`: {'matches': True, 'matched_name': 'example.com'}
 - `trust_chain_valid`: True
@@ -65,14 +65,14 @@ RequestTrace observes only what is externally visible. It cannot see internal se
 
 ## 9. HTTP/HTTPS Assessment
 
-- Status: **completed** (692.79 ms)
+- Status: **completed** (703.69 ms)
 - `final_url`: https://example.com/
 - `status_code`: 200
 - `http_version`: HTTP/1.1
 - `content_type`: text/html
-- `ttfb_ms`: 425.95
-- `total_duration_ms`: 437.25
-- `response_headers`: {'Date': 'Mon, 31 Aug 2026 18:05:03 GMT', 'Content-Type': 'text/html', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'last-modified': 'Mon, 31 Aug 2026 04:09:32 GMT', 'allow': 'GET, HEAD', 'Age': '3042', 'cf-cache-status': 'HIT', 'Content-Encoding': 'gzip', 'CF-RAY': 'a33df60df8530e74-AMS'}
+- `ttfb_ms`: 423.07
+- `total_duration_ms`: 431.96
+- `response_headers`: {'Date': 'Mon, 31 Aug 2026 19:05:57 GMT', 'Content-Type': 'text/html', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'last-modified': 'Mon, 31 Aug 2026 04:09:32 GMT', 'allow': 'GET, HEAD', 'Age': '6696', 'cf-cache-status': 'HIT', 'Content-Encoding': 'gzip', 'CF-RAY': 'a33e4f447cb90e00-AMS'}
 - `http_to_https_redirect`: {'probed_url': 'http://example.com/', 'status_code': 200, 'location': None, 'redirects_to_https': False}
 
 ## 10. Security Headers
@@ -94,8 +94,8 @@ RequestTrace observes only what is externally visible. It cannot see internal se
 
 ## 13. Performance Observations
 
-- TTFB: 425.95 ms
-- Total request duration: 437.25 ms
+- TTFB: 423.07 ms
+- Total request duration: 431.96 ms
 
 ## 14. Findings Summary
 
@@ -109,7 +109,7 @@ RequestTrace observes only what is externally visible. It cannot see internal se
 
 ## 15. Detailed Findings
 
-### finding-6e4f23eb1b93 — Plain HTTP requests are not redirected to HTTPS
+### finding-aa816a7c6968 — Plain HTTP requests are not redirected to HTTPS
 
 - **Rule ID:** `RT-HTTP-002`
 - **Severity:** HIGH
@@ -140,11 +140,11 @@ If using a managed CDN/edge/WAF: enable the 'redirect HTTP to HTTPS' / 'force HT
 **Priority:** High — remediate within the next release cycle.
 
 **Evidence:**
-- `ev-061375818439` (http, requests (plain-HTTP probe, allow_redirects=False)): {'probed_url': 'http://example.com/', 'status_code': 200, 'location': None, 'redirects_to_https': False}
+- `ev-24acc7bc8154` (http, requests (plain-HTTP probe, allow_redirects=False)): {'probed_url': 'http://example.com/', 'status_code': 200, 'location': None, 'redirects_to_https': False}
 
 ---
 
-### finding-ccdb1a2fd948 — Missing Strict-Transport-Security (HSTS) header
+### finding-faf91ce2f416 — Missing Strict-Transport-Security (HSTS) header
 
 - **Rule ID:** `RT-HDR-001`
 - **Severity:** HIGH
@@ -174,11 +174,11 @@ If using a managed CDN/edge/WAF: enable the HSTS header injection feature if you
 **Priority:** High — remediate within the next release cycle.
 
 **Evidence:**
-- `ev-ebd87750e152` (headers, header_analyzer.analyze_security_headers): {'present': False, 'raw': None, 'max_age': None, 'include_subdomains': False, 'preload': False}
+- `ev-0d5d8b8cd588` (headers, header_analyzer.analyze_security_headers): {'present': False, 'raw': None, 'max_age': None, 'include_subdomains': False, 'preload': False}
 
 ---
 
-### finding-a06829568b3a — Missing Content-Security-Policy header
+### finding-d51667cb0ef0 — Missing Content-Security-Policy header
 
 - **Rule ID:** `RT-HDR-002`
 - **Severity:** MEDIUM
@@ -203,11 +203,11 @@ add_header Content-Security-Policy "default-src 'self'" always;
 **Priority:** Medium — remediate as part of the next security hardening pass.
 
 **Evidence:**
-- `ev-4dac4929dabb` (headers, header_analyzer.analyze_security_headers): {'present': False, 'raw': None, 'high_risk_patterns': []}
+- `ev-4edbd532c0e1` (headers, header_analyzer.analyze_security_headers): {'present': False, 'raw': None, 'high_risk_patterns': []}
 
 ---
 
-### finding-41481a1ae51e — Missing clickjacking / frame protection
+### finding-92d0c91ebf7e — Missing clickjacking / frame protection
 
 - **Rule ID:** `RT-HDR-005`
 - **Severity:** MEDIUM
@@ -232,11 +232,11 @@ add_header Content-Security-Policy "frame-ancestors 'self'" always;
 **Priority:** Medium — remediate as part of the next security hardening pass.
 
 **Evidence:**
-- `ev-0934bf597d6c` (headers, header_analyzer.analyze_security_headers): {'csp_frame_ancestors_present': False, 'x_frame_options_present': False, 'x_frame_options_value': None, 'protected': False}
+- `ev-aa3ffcbc2c5e` (headers, header_analyzer.analyze_security_headers): {'csp_frame_ancestors_present': False, 'x_frame_options_present': False, 'x_frame_options_value': None, 'protected': False}
 
 ---
 
-### finding-232ebba16077 — Missing or invalid X-Content-Type-Options header
+### finding-ba605c7e89ff — Missing or invalid X-Content-Type-Options header
 
 - **Rule ID:** `RT-HDR-003`
 - **Severity:** LOW
@@ -264,11 +264,11 @@ res.setHeader("X-Content-Type-Options", "nosniff");
 **Priority:** Low — remediate opportunistically.
 
 **Evidence:**
-- `ev-5dc311c540f1` (headers, header_analyzer.analyze_security_headers): {'present': False, 'value': None, 'valid_nosniff': False}
+- `ev-f7d4ecb09d69` (headers, header_analyzer.analyze_security_headers): {'present': False, 'value': None, 'valid_nosniff': False}
 
 ---
 
-### finding-35ef28a78902 — Missing Referrer-Policy header
+### finding-fa0f88cb6a29 — Missing Referrer-Policy header
 
 - **Rule ID:** `RT-HDR-004`
 - **Severity:** LOW
@@ -296,7 +296,7 @@ res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
 **Priority:** Low — remediate opportunistically.
 
 **Evidence:**
-- `ev-e1048b950453` (headers, header_analyzer.analyze_security_headers): {'present': False, 'value': None}
+- `ev-f28369a63ec8` (headers, header_analyzer.analyze_security_headers): {'present': False, 'value': None}
 
 ---
 
@@ -318,37 +318,37 @@ res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
 
 | Evidence ID | Module | Confidence | Source Method | Normalized Value |
 |---|---|---|---|---|
-| ev-28539df5d1f0 | dns | observed | dns.resolver.resolve(A) | ['104.20.23.154', '172.66.147.243'] |
-| ev-3882d5e39ccb | dns | observed | dns.resolver.resolve(AAAA) | ['2606:4700:10::6814:179a', '2606:4700:10::ac42:93f3'] |
-| ev-899c235ecc77 | dns | observed | dns.resolver.resolve(NS) | ['elliott.ns.cloudflare.com', 'hera.ns.cloudflare.com'] |
-| ev-548d8aa0c103 | connectivity | observed | socket.create_connection | {'selected_ip': '104.20.23.154', 'port': 443, 'address_family': 'IPv4'} |
-| ev-fe31fba22597 | tls | observed | ssl.SSLContext.wrap_socket | example.com |
-| ev-dff72c357ea8 | tls | observed | ssl.SSLContext.wrap_socket | TLSv1.3 |
-| ev-8481a2634594 | tls | observed | ssl.SSLContext.wrap_socket | {'name': 'TLS_AES_256_GCM_SHA384', 'protocol': 'TLSv1.3', 'bits': 256} |
-| ev-e8f00babee81 | tls | observed | ssl.SSLContext.wrap_socket | h2 |
-| ev-86f93ec131e6 | tls | observed | ssl.SSLContext.wrap_socket | 294.73 |
-| ev-d05c2e91fc53 | tls | observed | cryptography.x509.load_der_x509_certificate | {'subject': 'CN=example.com', 'issuer': 'CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US', 'subject_alternative_names': ['example.com', '*.example.com'], 'not_valid_before': '2026-07-29T22:10:08+00:00', 'not_valid_after': '2026-10-27T22:17:21+00:00', 'days_remaining': 57, 'fingerprint_sha256': '6153a96fd1a6ab7f4d438fc34932484299d0729d9140b3a126bb2f9c07b02200', 'signature_algorithm': 'ecdsa-with-SHA256', 'public_key_algorithm': 'EC (secp256r1)', 'public_key_size_bits': 256} |
-| ev-1d9210b4d15e | tls | observed | manual SAN comparison (independent of trust-chain validation) | {'matches': True, 'matched_name': 'example.com'} |
-| ev-591b74a6d49d | tls | observed | ssl.create_default_context (system trust store) | True |
-| ev-e89eb52d962c | tls | observed | ssl.SSLContext(minimum_version=maximum_version=<probed>) | {'TLS 1.0': {'tested': True, 'supported': False, 'reason': '[SSL: NO_PROTOCOLS_AVAILABLE] no protocols available (_ssl.c:1018)', 'note': 'Local OpenSSL security policy may also reject this legacy protocol independent of server support.'}, 'TLS 1.1': {'tested': True, 'supported': False, 'reason': '[SSL: NO_PROTOCOLS_AVAILABLE] no protocols available (_ssl.c:1018)', 'note': 'Local OpenSSL security policy may also reject this legacy protocol independent of server support.'}, 'TLS 1.2': {'tested': True, 'supported': True, 'reason': None}, 'TLS 1.3': {'tested': True, 'supported': True, 'reason': None}} |
-| ev-aa2e722c3069 | redirects | observed | redirect_analyzer.analyze_redirect_chain | [{'url': 'https://example.com/', 'status_code': 200, 'location': None, 'scheme': 'https'}] |
-| ev-1a91cddf51ae | redirects | observed | redirect_analyzer.analyze_redirect_chain | False |
-| ev-fc9f7c026a0e | redirects | observed | redirect_analyzer.analyze_redirect_chain | False |
-| ev-59441404ebe8 | http | observed | requests.Session.get | https://example.com/ |
-| ev-93ffe220b412 | http | observed | requests.Session.get | 200 |
-| ev-c6c8ccf5b24a | http | observed | requests.Session.get | HTTP/1.1 |
-| ev-b3850e065c70 | http | observed | requests.Session.get | text/html |
-| ev-4e2772693368 | http | observed | requests.Session.get | 425.95 |
-| ev-76d25ddf8585 | http | observed | requests.Session.get | 437.25 |
-| ev-fe92ee3f17ca | http | observed | requests.Session.get | {'Date': 'Mon, 31 Aug 2026 18:05:03 GMT', 'Content-Type': 'text/html', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'last-modified': 'Mon, 31 Aug 2026 04:09:32 GMT', 'allow': 'GET, HEAD', 'Age': '3042', 'cf-cache-status': 'HIT', 'Content-Encoding': 'gzip', 'CF-RAY': 'a33df60df8530e74-AMS'} |
-| ev-ebd87750e152 | headers | observed | header_analyzer.analyze_security_headers | {'present': False, 'raw': None, 'max_age': None, 'include_subdomains': False, 'preload': False} |
-| ev-4dac4929dabb | headers | observed | header_analyzer.analyze_security_headers | {'present': False, 'raw': None, 'high_risk_patterns': []} |
-| ev-5dc311c540f1 | headers | observed | header_analyzer.analyze_security_headers | {'present': False, 'value': None, 'valid_nosniff': False} |
-| ev-e1048b950453 | headers | observed | header_analyzer.analyze_security_headers | {'present': False, 'value': None} |
-| ev-0934bf597d6c | headers | observed | header_analyzer.analyze_security_headers | {'csp_frame_ancestors_present': False, 'x_frame_options_present': False, 'x_frame_options_value': None, 'protected': False} |
-| ev-20192290939f | headers | observed | header_analyzer.analyze_security_headers | {'present': False, 'value': None} |
-| ev-061375818439 | http | observed | requests (plain-HTTP probe, allow_redirects=False) | {'probed_url': 'http://example.com/', 'status_code': 200, 'location': None, 'redirects_to_https': False} |
-| ev-844910055440 | edge | high | edge_fingerprint.analyze_edge_indicators | {'matches': [{'provider': 'Cloudflare', 'confidence': 'high', 'indicators': ["Response header 'CF-RAY' present", "Response header 'Server: cloudflare'", "Certificate issuer 'CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US'"], 'statement': 'Indicators are consistent with Cloudflare.'}], 'unknown': False} |
+| ev-b0e98c8d63a6 | dns | observed | dns.resolver.resolve(A) | ['104.20.23.154', '172.66.147.243'] |
+| ev-b468b6be82fe | dns | observed | dns.resolver.resolve(AAAA) | ['2606:4700:10::6814:179a', '2606:4700:10::ac42:93f3'] |
+| ev-f93ef2773f85 | dns | observed | dns.resolver.resolve(NS) | ['elliott.ns.cloudflare.com', 'hera.ns.cloudflare.com'] |
+| ev-0c3009ddd524 | connectivity | observed | socket.create_connection | {'selected_ip': '172.66.147.243', 'port': 443, 'address_family': 'IPv4'} |
+| ev-36e45e728057 | tls | observed | ssl.SSLContext.wrap_socket | example.com |
+| ev-bd0c11fadcaf | tls | observed | ssl.SSLContext.wrap_socket | TLSv1.3 |
+| ev-848101da10d4 | tls | observed | ssl.SSLContext.wrap_socket | {'name': 'TLS_AES_256_GCM_SHA384', 'protocol': 'TLSv1.3', 'bits': 256} |
+| ev-ced208363b25 | tls | observed | ssl.SSLContext.wrap_socket | h2 |
+| ev-3a82ad5ce52c | tls | observed | ssl.SSLContext.wrap_socket | 250.38 |
+| ev-e3448a01a208 | tls | observed | cryptography.x509.load_der_x509_certificate | {'subject': 'CN=example.com', 'issuer': 'CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US', 'subject_alternative_names': ['example.com', '*.example.com'], 'not_valid_before': '2026-07-29T22:10:08+00:00', 'not_valid_after': '2026-10-27T22:17:21+00:00', 'days_remaining': 57, 'fingerprint_sha256': '6153a96fd1a6ab7f4d438fc34932484299d0729d9140b3a126bb2f9c07b02200', 'signature_algorithm': 'ecdsa-with-SHA256', 'public_key_algorithm': 'EC (secp256r1)', 'public_key_size_bits': 256} |
+| ev-9ff8a7afa391 | tls | observed | manual SAN comparison (independent of trust-chain validation) | {'matches': True, 'matched_name': 'example.com'} |
+| ev-3ec5a93a04e3 | tls | observed | ssl.create_default_context (system trust store) | True |
+| ev-600e2d19621f | tls | observed | ssl.SSLContext(minimum_version=maximum_version=<probed>) | {'TLS 1.0': {'tested': True, 'supported': False, 'reason': '[SSL: NO_PROTOCOLS_AVAILABLE] no protocols available (_ssl.c:1018)', 'note': 'Local OpenSSL security policy may also reject this legacy protocol independent of server support.'}, 'TLS 1.1': {'tested': True, 'supported': False, 'reason': '[SSL: NO_PROTOCOLS_AVAILABLE] no protocols available (_ssl.c:1018)', 'note': 'Local OpenSSL security policy may also reject this legacy protocol independent of server support.'}, 'TLS 1.2': {'tested': True, 'supported': True, 'reason': None}, 'TLS 1.3': {'tested': True, 'supported': True, 'reason': None}} |
+| ev-cb97b0264d93 | redirects | observed | redirect_analyzer.analyze_redirect_chain | [{'url': 'https://example.com/', 'status_code': 200, 'location': None, 'scheme': 'https'}] |
+| ev-bb68168c1ec1 | redirects | observed | redirect_analyzer.analyze_redirect_chain | False |
+| ev-ba440b8ca427 | redirects | observed | redirect_analyzer.analyze_redirect_chain | False |
+| ev-e187c6a6c78b | http | observed | requests.Session.get | https://example.com/ |
+| ev-c7e7923c5120 | http | observed | requests.Session.get | 200 |
+| ev-1fc19dd1dd0d | http | observed | requests.Session.get | HTTP/1.1 |
+| ev-a6dee08b88a1 | http | observed | requests.Session.get | text/html |
+| ev-bb957787f971 | http | observed | requests.Session.get | 423.07 |
+| ev-86757d889320 | http | observed | requests.Session.get | 431.96 |
+| ev-f06b2eb0975a | http | observed | requests.Session.get | {'Date': 'Mon, 31 Aug 2026 19:05:57 GMT', 'Content-Type': 'text/html', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'cloudflare', 'last-modified': 'Mon, 31 Aug 2026 04:09:32 GMT', 'allow': 'GET, HEAD', 'Age': '6696', 'cf-cache-status': 'HIT', 'Content-Encoding': 'gzip', 'CF-RAY': 'a33e4f447cb90e00-AMS'} |
+| ev-0d5d8b8cd588 | headers | observed | header_analyzer.analyze_security_headers | {'present': False, 'raw': None, 'max_age': None, 'include_subdomains': False, 'preload': False} |
+| ev-4edbd532c0e1 | headers | observed | header_analyzer.analyze_security_headers | {'present': False, 'raw': None, 'high_risk_patterns': []} |
+| ev-f7d4ecb09d69 | headers | observed | header_analyzer.analyze_security_headers | {'present': False, 'value': None, 'valid_nosniff': False} |
+| ev-f28369a63ec8 | headers | observed | header_analyzer.analyze_security_headers | {'present': False, 'value': None} |
+| ev-aa3ffcbc2c5e | headers | observed | header_analyzer.analyze_security_headers | {'csp_frame_ancestors_present': False, 'x_frame_options_present': False, 'x_frame_options_value': None, 'protected': False} |
+| ev-a398077e898b | headers | observed | header_analyzer.analyze_security_headers | {'present': False, 'value': None} |
+| ev-24acc7bc8154 | http | observed | requests (plain-HTTP probe, allow_redirects=False) | {'probed_url': 'http://example.com/', 'status_code': 200, 'location': None, 'redirects_to_https': False} |
+| ev-a53735358664 | edge | high | edge_fingerprint.analyze_edge_indicators | {'matches': [{'provider': 'Cloudflare', 'confidence': 'high', 'indicators': ["Response header 'CF-RAY' present", "Response header 'Server: cloudflare'", "Certificate issuer 'CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US'"], 'statement': 'Indicators are consistent with Cloudflare.'}], 'unknown': False} |
 
 ---
 

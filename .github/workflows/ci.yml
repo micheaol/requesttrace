@@ -94,6 +94,10 @@ jobs:
             python -m http.server 8000
           sleep 2
           mkdir -p "$PWD/reports"
+          # The image runs as a fixed non-root uid (10001). A bind-mounted
+          # host directory is owned by the runner's own uid by default, so
+          # the container user can't write into it unless we hand it over.
+          sudo chown -R 10001:10001 "$PWD/reports"
           docker run --rm --network rt-smoke-net \
             -v "$PWD/reports:/app/reports" \
             requesttrace:ci scan http://rt-smoke-target:8000/ --report --format json --fail-on never
