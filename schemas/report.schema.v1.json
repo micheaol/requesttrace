@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/requesttrace/requesttrace/schemas/report.schema.v1.json",
+  "title": "RequestTrace Scan Report",
+  "description": "Versioned JSON schema for a RequestTrace scan report (schema_version 1.0.0).",
+  "type": "object",
+  "required": ["metadata", "target", "observations", "evidence", "findings", "module_results", "assessment_label", "severity_summary"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["scan_id", "scanner_version", "ruleset_version", "schema_version", "runtime", "started_at", "config"],
+      "properties": {
+        "scan_id": { "type": "string" },
+        "scanner_version": { "type": "string" },
+        "ruleset_version": { "type": "string" },
+        "schema_version": { "type": "string" },
+        "runtime": { "type": "string" },
+        "container_image": { "type": ["string", "null"] },
+        "started_at": { "type": "string", "format": "date-time" },
+        "completed_at": { "type": ["string", "null"], "format": "date-time" },
+        "config": {
+          "type": "object",
+          "required": ["timeout_seconds", "max_redirects", "fail_on", "user_agent", "certificate_warning_days", "certificate_critical_days"],
+          "properties": {
+            "timeout_seconds": { "type": "number" },
+            "max_redirects": { "type": "integer" },
+            "fail_on": { "type": "string", "enum": ["critical", "high", "medium", "low", "never"] },
+            "user_agent": { "type": "string" },
+            "certificate_warning_days": { "type": "integer" },
+            "certificate_critical_days": { "type": "integer" }
+          }
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "required": ["raw_input", "scheme", "host", "port", "path", "normalized_url"],
+      "properties": {
+        "raw_input": { "type": "string" },
+        "scheme": { "type": "string", "enum": ["http", "https"] },
+        "host": { "type": "string" },
+        "port": { "type": "integer" },
+        "path": { "type": "string" },
+        "query": { "type": "string" },
+        "normalized_url": { "type": "string" },
+        "is_ip_literal": { "type": "boolean" }
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["observation_id", "module", "type", "value", "timestamp", "confidence"],
+        "properties": {
+          "observation_id": { "type": "string" },
+          "module": { "type": "string" },
+          "type": { "type": "string" },
+          "value": {},
+          "timestamp": { "type": "string", "format": "date-time" },
+          "confidence": { "type": "string", "enum": ["observed", "high", "medium", "low", "unknown"] },
+          "metadata": { "type": "object" }
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["evidence_id", "observation_id", "module", "timestamp", "normalized_value", "source_method", "confidence"],
+        "properties": {
+          "evidence_id": { "type": "string" },
+          "observation_id": { "type": "string" },
+          "module": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "normalized_value": {},
+          "source_method": { "type": "string" },
+          "confidence": { "type": "string" },
+          "sanitized_raw": { "type": "object" }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "finding_id", "rule_id", "title", "severity", "status", "affected_asset",
+          "description", "evidence_ids", "security_impact", "recommendation",
+          "how_to_fix", "verification", "priority"
+        ],
+        "properties": {
+          "finding_id": { "type": "string" },
+          "rule_id": { "type": "string", "pattern": "^RT-[A-Z]+-[0-9]{3}$" },
+          "title": { "type": "string" },
+          "severity": { "type": "string", "enum": ["critical", "high", "medium", "low", "informational"] },
+          "status": { "type": "string", "enum": ["open", "resolved", "accepted_risk"] },
+          "affected_asset": { "type": "string" },
+          "description": { "type": "string" },
+          "evidence_ids": { "type": "array", "items": { "type": "string" } },
+          "security_impact": { "type": "string" },
+          "recommendation": { "type": "string" },
+          "how_to_fix": { "type": "string" },
+          "verification": { "type": "string" },
+          "priority": { "type": "string" },
+          "references": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "module_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["module", "status", "duration_ms"],
+        "properties": {
+          "module": { "type": "string" },
+          "status": { "type": "string", "enum": ["completed", "partial", "error", "not_tested", "skipped"] },
+          "duration_ms": { "type": "number" },
+          "observation_ids": { "type": "array", "items": { "type": "string" } },
+          "errors": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "assessment_label": {
+      "type": "string",
+      "enum": ["PASS", "PASS WITH OBSERVATIONS", "REMEDIATION REQUIRED", "HIGH RISK", "ASSESSMENT INCOMPLETE"]
+    },
+    "severity_summary": {
+      "type": "object",
+      "additionalProperties": { "type": "integer" }
+    }
+  }
+}

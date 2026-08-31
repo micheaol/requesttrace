@@ -1,0 +1,9 @@
+services:
+  requesttrace:
+    build: .
+    image: requesttrace:local
+    volumes:
+      - ./reports:/app/reports
+    # Example: docker compose run --rm requesttrace scan https://example.com --report
+    entrypoint: ["tini", "--", "requesttrace"]
+    command: ["--help"]

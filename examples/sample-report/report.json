@@ -1,0 +1,1270 @@
+{
+  "metadata": {
+    "scan_id": "scan-632fbb2389e8",
+    "scanner_version": "1.0.0",
+    "ruleset_version": "2026.08.1",
+    "schema_version": "1.0.0",
+    "runtime": "Python 3.13.1 (darwin)",
+    "container_image": null,
+    "started_at": "2026-08-31T18:05:00.127699Z",
+    "completed_at": "2026-08-31T18:05:02.880247Z",
+    "config": {
+      "timeout_seconds": 10.0,
+      "max_redirects": 10,
+      "fail_on": "high",
+      "user_agent": "RequestTrace/1.0 (+https://github.com/requesttrace/requesttrace)",
+      "certificate_warning_days": 30,
+      "certificate_critical_days": 7
+    }
+  },
+  "target": {
+    "raw_input": "https://example.com",
+    "scheme": "https",
+    "host": "example.com",
+    "port": 443,
+    "path": "/",
+    "query": "",
+    "normalized_url": "https://example.com/",
+    "is_ip_literal": false
+  },
+  "observations": [
+    {
+      "observation_id": "obs-adeab17d529e",
+      "module": "dns",
+      "type": "a_records",
+      "value": [
+        "104.20.23.154",
+        "172.66.147.243"
+      ],
+      "timestamp": "2026-08-31T18:05:00.219860Z",
+      "confidence": "observed",
+      "metadata": {
+        "duration_ms": 89.85102599763195,
+        "record_type": "A"
+      }
+    },
+    {
+      "observation_id": "obs-07f30ea92030",
+      "module": "dns",
+      "type": "aaaa_records",
+      "value": [
+        "2606:4700:10::6814:179a",
+        "2606:4700:10::ac42:93f3"
+      ],
+      "timestamp": "2026-08-31T18:05:00.308651Z",
+      "confidence": "observed",
+      "metadata": {
+        "duration_ms": 88.66768200095976,
+        "record_type": "AAAA"
+      }
+    },
+    {
+      "observation_id": "obs-b219855afc8a",
+      "module": "dns",
+      "type": "ns_records",
+      "value": [
+        "elliott.ns.cloudflare.com",
+        "hera.ns.cloudflare.com"
+      ],
+      "timestamp": "2026-08-31T18:05:00.409188Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-1efac4bc7bb5",
+      "module": "connectivity",
+      "type": "tcp_connection",
+      "value": {
+        "selected_ip": "104.20.23.154",
+        "port": 443,
+        "address_family": "IPv4"
+      },
+      "timestamp": "2026-08-31T18:05:00.650633Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-367f8ecfd84d",
+      "module": "tls",
+      "type": "sni",
+      "value": "example.com",
+      "timestamp": "2026-08-31T18:05:00.948570Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-4929d91add88",
+      "module": "tls",
+      "type": "negotiated_protocol",
+      "value": "TLSv1.3",
+      "timestamp": "2026-08-31T18:05:00.948643Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-0d3b20bff6a8",
+      "module": "tls",
+      "type": "negotiated_cipher",
+      "value": {
+        "name": "TLS_AES_256_GCM_SHA384",
+        "protocol": "TLSv1.3",
+        "bits": 256
+      },
+      "timestamp": "2026-08-31T18:05:00.948684Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-9da7179be437",
+      "module": "tls",
+      "type": "alpn_protocol",
+      "value": "h2",
+      "timestamp": "2026-08-31T18:05:00.948718Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-da1cc333ee5b",
+      "module": "tls",
+      "type": "handshake_duration_ms",
+      "value": 294.73,
+      "timestamp": "2026-08-31T18:05:00.948750Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-8ad6964be70c",
+      "module": "tls",
+      "type": "certificate",
+      "value": {
+        "subject": "CN=example.com",
+        "issuer": "CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US",
+        "subject_alternative_names": [
+          "example.com",
+          "*.example.com"
+        ],
+        "not_valid_before": "2026-07-29T22:10:08+00:00",
+        "not_valid_after": "2026-10-27T22:17:21+00:00",
+        "days_remaining": 57,
+        "fingerprint_sha256": "6153a96fd1a6ab7f4d438fc34932484299d0729d9140b3a126bb2f9c07b02200",
+        "signature_algorithm": "ecdsa-with-SHA256",
+        "public_key_algorithm": "EC (secp256r1)",
+        "public_key_size_bits": 256
+      },
+      "timestamp": "2026-08-31T18:05:00.951791Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-53b98cb0db3b",
+      "module": "tls",
+      "type": "hostname_match",
+      "value": {
+        "matches": true,
+        "matched_name": "example.com"
+      },
+      "timestamp": "2026-08-31T18:05:00.952497Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-2cdd218ff539",
+      "module": "tls",
+      "type": "trust_chain_valid",
+      "value": true,
+      "timestamp": "2026-08-31T18:05:01.241621Z",
+      "confidence": "observed",
+      "metadata": {
+        "failure_category": null
+      }
+    },
+    {
+      "observation_id": "obs-b9b707899e6b",
+      "module": "tls",
+      "type": "protocol_support",
+      "value": {
+        "TLS 1.0": {
+          "tested": true,
+          "supported": false,
+          "reason": "[SSL: NO_PROTOCOLS_AVAILABLE] no protocols available (_ssl.c:1018)",
+          "note": "Local OpenSSL security policy may also reject this legacy protocol independent of server support."
+        },
+        "TLS 1.1": {
+          "tested": true,
+          "supported": false,
+          "reason": "[SSL: NO_PROTOCOLS_AVAILABLE] no protocols available (_ssl.c:1018)",
+          "note": "Local OpenSSL security policy may also reject this legacy protocol independent of server support."
+        },
+        "TLS 1.2": {
+          "tested": true,
+          "supported": true,
+          "reason": null
+        },
+        "TLS 1.3": {
+          "tested": true,
+          "supported": true,
+          "reason": null
+        }
+      },
+      "timestamp": "2026-08-31T18:05:02.186184Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-8c7cd372950d",
+      "module": "redirects",
+      "type": "redirect_chain",
+      "value": [
+        {
+          "url": "https://example.com/",
+          "status_code": 200,
+          "location": null,
+          "scheme": "https"
+        }
+      ],
+      "timestamp": "2026-08-31T18:05:02.623730Z",
+      "confidence": "observed",
+      "metadata": {
+        "hop_count": 1
+      }
+    },
+    {
+      "observation_id": "obs-8cff2ad288f5",
+      "module": "redirects",
+      "type": "redirect_loop_detected",
+      "value": false,
+      "timestamp": "2026-08-31T18:05:02.623787Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-5d40e9790e7e",
+      "module": "redirects",
+      "type": "https_to_http_downgrade_detected",
+      "value": false,
+      "timestamp": "2026-08-31T18:05:02.623826Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-da816554e0f7",
+      "module": "http",
+      "type": "final_url",
+      "value": "https://example.com/",
+      "timestamp": "2026-08-31T18:05:02.623889Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-0296601d2c12",
+      "module": "http",
+      "type": "status_code",
+      "value": 200,
+      "timestamp": "2026-08-31T18:05:02.623937Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-53783e063758",
+      "module": "http",
+      "type": "http_version",
+      "value": "HTTP/1.1",
+      "timestamp": "2026-08-31T18:05:02.623970Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-8daa7e619b69",
+      "module": "http",
+      "type": "content_type",
+      "value": "text/html",
+      "timestamp": "2026-08-31T18:05:02.624004Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-32ee254b7938",
+      "module": "http",
+      "type": "ttfb_ms",
+      "value": 425.95,
+      "timestamp": "2026-08-31T18:05:02.624037Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-dceba3848bb1",
+      "module": "http",
+      "type": "total_duration_ms",
+      "value": 437.25,
+      "timestamp": "2026-08-31T18:05:02.624068Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-722173b3970b",
+      "module": "http",
+      "type": "response_headers",
+      "value": {
+        "Date": "Mon, 31 Aug 2026 18:05:03 GMT",
+        "Content-Type": "text/html",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Server": "cloudflare",
+        "last-modified": "Mon, 31 Aug 2026 04:09:32 GMT",
+        "allow": "GET, HEAD",
+        "Age": "3042",
+        "cf-cache-status": "HIT",
+        "Content-Encoding": "gzip",
+        "CF-RAY": "a33df60df8530e74-AMS"
+      },
+      "timestamp": "2026-08-31T18:05:02.624097Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-2f344a21378d",
+      "module": "headers",
+      "type": "hsts",
+      "value": {
+        "present": false,
+        "raw": null,
+        "max_age": null,
+        "include_subdomains": false,
+        "preload": false
+      },
+      "timestamp": "2026-08-31T18:05:02.624154Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-c52627ddf298",
+      "module": "headers",
+      "type": "content_security_policy",
+      "value": {
+        "present": false,
+        "raw": null,
+        "high_risk_patterns": []
+      },
+      "timestamp": "2026-08-31T18:05:02.624202Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-bf3584c6918a",
+      "module": "headers",
+      "type": "x_content_type_options",
+      "value": {
+        "present": false,
+        "value": null,
+        "valid_nosniff": false
+      },
+      "timestamp": "2026-08-31T18:05:02.624237Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-ece129410431",
+      "module": "headers",
+      "type": "referrer_policy",
+      "value": {
+        "present": false,
+        "value": null
+      },
+      "timestamp": "2026-08-31T18:05:02.624269Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-499071818338",
+      "module": "headers",
+      "type": "frame_protection",
+      "value": {
+        "csp_frame_ancestors_present": false,
+        "x_frame_options_present": false,
+        "x_frame_options_value": null,
+        "protected": false
+      },
+      "timestamp": "2026-08-31T18:05:02.624303Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-de461fdecd1f",
+      "module": "headers",
+      "type": "permissions_policy",
+      "value": {
+        "present": false,
+        "value": null
+      },
+      "timestamp": "2026-08-31T18:05:02.624336Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-58430691ee20",
+      "module": "cookies",
+      "type": "cookies_present",
+      "value": false,
+      "timestamp": "2026-08-31T18:05:02.624372Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-0d01d637e8da",
+      "module": "http",
+      "type": "http_to_https_redirect",
+      "value": {
+        "probed_url": "http://example.com/",
+        "status_code": 200,
+        "location": null,
+        "redirects_to_https": false
+      },
+      "timestamp": "2026-08-31T18:05:02.878974Z",
+      "confidence": "observed",
+      "metadata": {}
+    },
+    {
+      "observation_id": "obs-5d48ffe0d90c",
+      "module": "edge",
+      "type": "edge_provider_indicators",
+      "value": {
+        "matches": [
+          {
+            "provider": "Cloudflare",
+            "confidence": "high",
+            "indicators": [
+              "Response header 'CF-RAY' present",
+              "Response header 'Server: cloudflare'",
+              "Certificate issuer 'CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US'"
+            ],
+            "statement": "Indicators are consistent with Cloudflare."
+          }
+        ],
+        "unknown": false
+      },
+      "timestamp": "2026-08-31T18:05:02.879210Z",
+      "confidence": "high",
+      "metadata": {}
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "ev-28539df5d1f0",
+      "observation_id": "obs-adeab17d529e",
+      "module": "dns",
+      "timestamp": "2026-08-31T18:05:00.219860Z",
+      "normalized_value": [
+        "104.20.23.154",
+        "172.66.147.243"
+      ],
+      "source_method": "dns.resolver.resolve(A)",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "addresses": [
+          "104.20.23.154",
+          "172.66.147.243"
+        ],
+        "duration_ms": 89.85102599763195
+      }
+    },
+    {
+      "evidence_id": "ev-3882d5e39ccb",
+      "observation_id": "obs-07f30ea92030",
+      "module": "dns",
+      "timestamp": "2026-08-31T18:05:00.308651Z",
+      "normalized_value": [
+        "2606:4700:10::6814:179a",
+        "2606:4700:10::ac42:93f3"
+      ],
+      "source_method": "dns.resolver.resolve(AAAA)",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "addresses": [
+          "2606:4700:10::6814:179a",
+          "2606:4700:10::ac42:93f3"
+        ],
+        "duration_ms": 88.66768200095976
+      }
+    },
+    {
+      "evidence_id": "ev-899c235ecc77",
+      "observation_id": "obs-b219855afc8a",
+      "module": "dns",
+      "timestamp": "2026-08-31T18:05:00.409188Z",
+      "normalized_value": [
+        "elliott.ns.cloudflare.com",
+        "hera.ns.cloudflare.com"
+      ],
+      "source_method": "dns.resolver.resolve(NS)",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "nameservers": [
+          "elliott.ns.cloudflare.com",
+          "hera.ns.cloudflare.com"
+        ]
+      }
+    },
+    {
+      "evidence_id": "ev-548d8aa0c103",
+      "observation_id": "obs-1efac4bc7bb5",
+      "module": "connectivity",
+      "timestamp": "2026-08-31T18:05:00.650633Z",
+      "normalized_value": {
+        "selected_ip": "104.20.23.154",
+        "port": 443,
+        "address_family": "IPv4"
+      },
+      "source_method": "socket.create_connection",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "selected_ip": "104.20.23.154",
+        "port": 443,
+        "address_family": "IPv4",
+        "duration_ms": 241.19168100151
+      }
+    },
+    {
+      "evidence_id": "ev-fe31fba22597",
+      "observation_id": "obs-367f8ecfd84d",
+      "module": "tls",
+      "timestamp": "2026-08-31T18:05:00.948570Z",
+      "normalized_value": "example.com",
+      "source_method": "ssl.SSLContext.wrap_socket",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": "example.com"
+      }
+    },
+    {
+      "evidence_id": "ev-dff72c357ea8",
+      "observation_id": "obs-4929d91add88",
+      "module": "tls",
+      "timestamp": "2026-08-31T18:05:00.948643Z",
+      "normalized_value": "TLSv1.3",
+      "source_method": "ssl.SSLContext.wrap_socket",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": "TLSv1.3"
+      }
+    },
+    {
+      "evidence_id": "ev-8481a2634594",
+      "observation_id": "obs-0d3b20bff6a8",
+      "module": "tls",
+      "timestamp": "2026-08-31T18:05:00.948684Z",
+      "normalized_value": {
+        "name": "TLS_AES_256_GCM_SHA384",
+        "protocol": "TLSv1.3",
+        "bits": 256
+      },
+      "source_method": "ssl.SSLContext.wrap_socket",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": {
+          "name": "TLS_AES_256_GCM_SHA384",
+          "protocol": "TLSv1.3",
+          "bits": 256
+        }
+      }
+    },
+    {
+      "evidence_id": "ev-e8f00babee81",
+      "observation_id": "obs-9da7179be437",
+      "module": "tls",
+      "timestamp": "2026-08-31T18:05:00.948718Z",
+      "normalized_value": "h2",
+      "source_method": "ssl.SSLContext.wrap_socket",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": "h2"
+      }
+    },
+    {
+      "evidence_id": "ev-86f93ec131e6",
+      "observation_id": "obs-da1cc333ee5b",
+      "module": "tls",
+      "timestamp": "2026-08-31T18:05:00.948750Z",
+      "normalized_value": 294.73,
+      "source_method": "ssl.SSLContext.wrap_socket",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": 294.73
+      }
+    },
+    {
+      "evidence_id": "ev-d05c2e91fc53",
+      "observation_id": "obs-8ad6964be70c",
+      "module": "tls",
+      "timestamp": "2026-08-31T18:05:00.951791Z",
+      "normalized_value": {
+        "subject": "CN=example.com",
+        "issuer": "CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US",
+        "subject_alternative_names": [
+          "example.com",
+          "*.example.com"
+        ],
+        "not_valid_before": "2026-07-29T22:10:08+00:00",
+        "not_valid_after": "2026-10-27T22:17:21+00:00",
+        "days_remaining": 57,
+        "fingerprint_sha256": "6153a96fd1a6ab7f4d438fc34932484299d0729d9140b3a126bb2f9c07b02200",
+        "signature_algorithm": "ecdsa-with-SHA256",
+        "public_key_algorithm": "EC (secp256r1)",
+        "public_key_size_bits": 256
+      },
+      "source_method": "cryptography.x509.load_der_x509_certificate",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "fingerprint_sha256": "6153a96fd1a6ab7f4d438fc34932484299d0729d9140b3a126bb2f9c07b02200",
+        "subject": "CN=example.com"
+      }
+    },
+    {
+      "evidence_id": "ev-1d9210b4d15e",
+      "observation_id": "obs-53b98cb0db3b",
+      "module": "tls",
+      "timestamp": "2026-08-31T18:05:00.952497Z",
+      "normalized_value": {
+        "matches": true,
+        "matched_name": "example.com"
+      },
+      "source_method": "manual SAN comparison (independent of trust-chain validation)",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "host": "example.com",
+        "matched_name": "example.com"
+      }
+    },
+    {
+      "evidence_id": "ev-591b74a6d49d",
+      "observation_id": "obs-2cdd218ff539",
+      "module": "tls",
+      "timestamp": "2026-08-31T18:05:01.241621Z",
+      "normalized_value": true,
+      "source_method": "ssl.create_default_context (system trust store)",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "failure_category": null,
+        "failure_message": null
+      }
+    },
+    {
+      "evidence_id": "ev-e89eb52d962c",
+      "observation_id": "obs-b9b707899e6b",
+      "module": "tls",
+      "timestamp": "2026-08-31T18:05:02.186184Z",
+      "normalized_value": {
+        "TLS 1.0": {
+          "tested": true,
+          "supported": false,
+          "reason": "[SSL: NO_PROTOCOLS_AVAILABLE] no protocols available (_ssl.c:1018)",
+          "note": "Local OpenSSL security policy may also reject this legacy protocol independent of server support."
+        },
+        "TLS 1.1": {
+          "tested": true,
+          "supported": false,
+          "reason": "[SSL: NO_PROTOCOLS_AVAILABLE] no protocols available (_ssl.c:1018)",
+          "note": "Local OpenSSL security policy may also reject this legacy protocol independent of server support."
+        },
+        "TLS 1.2": {
+          "tested": true,
+          "supported": true,
+          "reason": null
+        },
+        "TLS 1.3": {
+          "tested": true,
+          "supported": true,
+          "reason": null
+        }
+      },
+      "source_method": "ssl.SSLContext(minimum_version=maximum_version=<probed>)",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "protocol_support": {
+          "TLS 1.0": {
+            "tested": true,
+            "supported": false,
+            "reason": "[SSL: NO_PROTOCOLS_AVAILABLE] no protocols available (_ssl.c:1018)",
+            "note": "Local OpenSSL security policy may also reject this legacy protocol independent of server support."
+          },
+          "TLS 1.1": {
+            "tested": true,
+            "supported": false,
+            "reason": "[SSL: NO_PROTOCOLS_AVAILABLE] no protocols available (_ssl.c:1018)",
+            "note": "Local OpenSSL security policy may also reject this legacy protocol independent of server support."
+          },
+          "TLS 1.2": {
+            "tested": true,
+            "supported": true,
+            "reason": null
+          },
+          "TLS 1.3": {
+            "tested": true,
+            "supported": true,
+            "reason": null
+          }
+        }
+      }
+    },
+    {
+      "evidence_id": "ev-aa2e722c3069",
+      "observation_id": "obs-8c7cd372950d",
+      "module": "redirects",
+      "timestamp": "2026-08-31T18:05:02.623730Z",
+      "normalized_value": [
+        {
+          "url": "https://example.com/",
+          "status_code": 200,
+          "location": null,
+          "scheme": "https"
+        }
+      ],
+      "source_method": "redirect_analyzer.analyze_redirect_chain",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "chain": [
+          {
+            "url": "https://example.com/",
+            "status_code": 200,
+            "location": null,
+            "scheme": "https"
+          }
+        ]
+      }
+    },
+    {
+      "evidence_id": "ev-1a91cddf51ae",
+      "observation_id": "obs-8cff2ad288f5",
+      "module": "redirects",
+      "timestamp": "2026-08-31T18:05:02.623787Z",
+      "normalized_value": false,
+      "source_method": "redirect_analyzer.analyze_redirect_chain",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": false
+      }
+    },
+    {
+      "evidence_id": "ev-fc9f7c026a0e",
+      "observation_id": "obs-5d40e9790e7e",
+      "module": "redirects",
+      "timestamp": "2026-08-31T18:05:02.623826Z",
+      "normalized_value": false,
+      "source_method": "redirect_analyzer.analyze_redirect_chain",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": false
+      }
+    },
+    {
+      "evidence_id": "ev-59441404ebe8",
+      "observation_id": "obs-da816554e0f7",
+      "module": "http",
+      "timestamp": "2026-08-31T18:05:02.623889Z",
+      "normalized_value": "https://example.com/",
+      "source_method": "requests.Session.get",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": "https://example.com/"
+      }
+    },
+    {
+      "evidence_id": "ev-93ffe220b412",
+      "observation_id": "obs-0296601d2c12",
+      "module": "http",
+      "timestamp": "2026-08-31T18:05:02.623937Z",
+      "normalized_value": 200,
+      "source_method": "requests.Session.get",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": 200
+      }
+    },
+    {
+      "evidence_id": "ev-c6c8ccf5b24a",
+      "observation_id": "obs-53783e063758",
+      "module": "http",
+      "timestamp": "2026-08-31T18:05:02.623970Z",
+      "normalized_value": "HTTP/1.1",
+      "source_method": "requests.Session.get",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": "HTTP/1.1"
+      }
+    },
+    {
+      "evidence_id": "ev-b3850e065c70",
+      "observation_id": "obs-8daa7e619b69",
+      "module": "http",
+      "timestamp": "2026-08-31T18:05:02.624004Z",
+      "normalized_value": "text/html",
+      "source_method": "requests.Session.get",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": "text/html"
+      }
+    },
+    {
+      "evidence_id": "ev-4e2772693368",
+      "observation_id": "obs-32ee254b7938",
+      "module": "http",
+      "timestamp": "2026-08-31T18:05:02.624037Z",
+      "normalized_value": 425.95,
+      "source_method": "requests.Session.get",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": 425.95
+      }
+    },
+    {
+      "evidence_id": "ev-76d25ddf8585",
+      "observation_id": "obs-dceba3848bb1",
+      "module": "http",
+      "timestamp": "2026-08-31T18:05:02.624068Z",
+      "normalized_value": 437.25,
+      "source_method": "requests.Session.get",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": 437.25
+      }
+    },
+    {
+      "evidence_id": "ev-fe92ee3f17ca",
+      "observation_id": "obs-722173b3970b",
+      "module": "http",
+      "timestamp": "2026-08-31T18:05:02.624097Z",
+      "normalized_value": {
+        "Date": "Mon, 31 Aug 2026 18:05:03 GMT",
+        "Content-Type": "text/html",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Server": "cloudflare",
+        "last-modified": "Mon, 31 Aug 2026 04:09:32 GMT",
+        "allow": "GET, HEAD",
+        "Age": "3042",
+        "cf-cache-status": "HIT",
+        "Content-Encoding": "gzip",
+        "CF-RAY": "a33df60df8530e74-AMS"
+      },
+      "source_method": "requests.Session.get",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": {
+          "Date": "Mon, 31 Aug 2026 18:05:03 GMT",
+          "Content-Type": "text/html",
+          "Transfer-Encoding": "chunked",
+          "Connection": "keep-alive",
+          "Server": "cloudflare",
+          "last-modified": "Mon, 31 Aug 2026 04:09:32 GMT",
+          "allow": "GET, HEAD",
+          "Age": "3042",
+          "cf-cache-status": "HIT",
+          "Content-Encoding": "gzip",
+          "CF-RAY": "a33df60df8530e74-AMS"
+        }
+      }
+    },
+    {
+      "evidence_id": "ev-ebd87750e152",
+      "observation_id": "obs-2f344a21378d",
+      "module": "headers",
+      "timestamp": "2026-08-31T18:05:02.624154Z",
+      "normalized_value": {
+        "present": false,
+        "raw": null,
+        "max_age": null,
+        "include_subdomains": false,
+        "preload": false
+      },
+      "source_method": "header_analyzer.analyze_security_headers",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": {
+          "present": false,
+          "raw": null,
+          "max_age": null,
+          "include_subdomains": false,
+          "preload": false
+        }
+      }
+    },
+    {
+      "evidence_id": "ev-4dac4929dabb",
+      "observation_id": "obs-c52627ddf298",
+      "module": "headers",
+      "timestamp": "2026-08-31T18:05:02.624202Z",
+      "normalized_value": {
+        "present": false,
+        "raw": null,
+        "high_risk_patterns": []
+      },
+      "source_method": "header_analyzer.analyze_security_headers",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": {
+          "present": false,
+          "raw": null,
+          "high_risk_patterns": []
+        }
+      }
+    },
+    {
+      "evidence_id": "ev-5dc311c540f1",
+      "observation_id": "obs-bf3584c6918a",
+      "module": "headers",
+      "timestamp": "2026-08-31T18:05:02.624237Z",
+      "normalized_value": {
+        "present": false,
+        "value": null,
+        "valid_nosniff": false
+      },
+      "source_method": "header_analyzer.analyze_security_headers",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": {
+          "present": false,
+          "value": null,
+          "valid_nosniff": false
+        }
+      }
+    },
+    {
+      "evidence_id": "ev-e1048b950453",
+      "observation_id": "obs-ece129410431",
+      "module": "headers",
+      "timestamp": "2026-08-31T18:05:02.624269Z",
+      "normalized_value": {
+        "present": false,
+        "value": null
+      },
+      "source_method": "header_analyzer.analyze_security_headers",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": {
+          "present": false,
+          "value": null
+        }
+      }
+    },
+    {
+      "evidence_id": "ev-0934bf597d6c",
+      "observation_id": "obs-499071818338",
+      "module": "headers",
+      "timestamp": "2026-08-31T18:05:02.624303Z",
+      "normalized_value": {
+        "csp_frame_ancestors_present": false,
+        "x_frame_options_present": false,
+        "x_frame_options_value": null,
+        "protected": false
+      },
+      "source_method": "header_analyzer.analyze_security_headers",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": {
+          "csp_frame_ancestors_present": false,
+          "x_frame_options_present": false,
+          "x_frame_options_value": null,
+          "protected": false
+        }
+      }
+    },
+    {
+      "evidence_id": "ev-20192290939f",
+      "observation_id": "obs-de461fdecd1f",
+      "module": "headers",
+      "timestamp": "2026-08-31T18:05:02.624336Z",
+      "normalized_value": {
+        "present": false,
+        "value": null
+      },
+      "source_method": "header_analyzer.analyze_security_headers",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "value": {
+          "present": false,
+          "value": null
+        }
+      }
+    },
+    {
+      "evidence_id": "ev-061375818439",
+      "observation_id": "obs-0d01d637e8da",
+      "module": "http",
+      "timestamp": "2026-08-31T18:05:02.878974Z",
+      "normalized_value": {
+        "probed_url": "http://example.com/",
+        "status_code": 200,
+        "location": null,
+        "redirects_to_https": false
+      },
+      "source_method": "requests (plain-HTTP probe, allow_redirects=False)",
+      "confidence": "observed",
+      "sanitized_raw": {
+        "probed_url": "http://example.com/",
+        "location": null
+      }
+    },
+    {
+      "evidence_id": "ev-844910055440",
+      "observation_id": "obs-5d48ffe0d90c",
+      "module": "edge",
+      "timestamp": "2026-08-31T18:05:02.879210Z",
+      "normalized_value": {
+        "matches": [
+          {
+            "provider": "Cloudflare",
+            "confidence": "high",
+            "indicators": [
+              "Response header 'CF-RAY' present",
+              "Response header 'Server: cloudflare'",
+              "Certificate issuer 'CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US'"
+            ],
+            "statement": "Indicators are consistent with Cloudflare."
+          }
+        ],
+        "unknown": false
+      },
+      "source_method": "edge_fingerprint.analyze_edge_indicators",
+      "confidence": "high",
+      "sanitized_raw": {
+        "result": {
+          "matches": [
+            {
+              "provider": "Cloudflare",
+              "confidence": "high",
+              "indicators": [
+                "Response header 'CF-RAY' present",
+                "Response header 'Server: cloudflare'",
+                "Certificate issuer 'CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US'"
+              ],
+              "statement": "Indicators are consistent with Cloudflare."
+            }
+          ],
+          "unknown": false
+        }
+      }
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "finding-6e4f23eb1b93",
+      "rule_id": "RT-HTTP-002",
+      "title": "Plain HTTP requests are not redirected to HTTPS",
+      "severity": "high",
+      "status": "open",
+      "affected_asset": "example.com",
+      "description": "A request to http://example.com/ returned status 200 without redirecting to HTTPS.",
+      "evidence_ids": [
+        "ev-061375818439"
+      ],
+      "security_impact": "Clients that reach the site over plain HTTP (bookmarks, typed URLs, old links) will transmit requests in plaintext instead of being upgraded to a secure channel.",
+      "recommendation": "Redirect all plain-HTTP requests to the HTTPS equivalent (301/308).",
+      "how_to_fix": "Add an unconditional redirect from the HTTP listener to the equivalent HTTPS URL.\n\nExample (NGINX config \u2014 illustrative, verify against your actual origin):\nserver {\n    listen 80;\n    server_name example.com;\n    return 301 https://$host$request_uri;\n}\n\nIf using a managed CDN/edge/WAF: enable the 'redirect HTTP to HTTPS' / 'force HTTPS' option in your CDN or load balancer.",
+      "verification": "Re-run the scan and confirm `http_to_https_redirect.redirects_to_https` is true.",
+      "priority": "High \u2014 remediate within the next release cycle.",
+      "references": []
+    },
+    {
+      "finding_id": "finding-ccdb1a2fd948",
+      "rule_id": "RT-HDR-001",
+      "title": "Missing Strict-Transport-Security (HSTS) header",
+      "severity": "high",
+      "status": "open",
+      "affected_asset": "example.com",
+      "description": "No Strict-Transport-Security header was present on the HTTPS response.",
+      "evidence_ids": [
+        "ev-ebd87750e152"
+      ],
+      "security_impact": "Without HSTS, browsers may still attempt plain-HTTP connections first, leaving an opening for SSL-stripping style downgrade attacks.",
+      "recommendation": "Send a Strict-Transport-Security header with a long max-age on every HTTPS response.",
+      "how_to_fix": "Add the HSTS header at the edge or application layer for all HTTPS responses.\n\nExample (NGINX config \u2014 illustrative, verify against your actual origin):\nadd_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;\n\nExample (application middleware \u2014 illustrative, verify against your actual stack):\nres.setHeader(\"Strict-Transport-Security\", \"max-age=31536000; includeSubDomains\");\n\nIf using a managed CDN/edge/WAF: enable the HSTS header injection feature if your CDN/WAF offers one.",
+      "verification": "Re-run the scan and confirm `hsts.present` is true with an adequate max-age.",
+      "priority": "High \u2014 remediate within the next release cycle.",
+      "references": []
+    },
+    {
+      "finding_id": "finding-a06829568b3a",
+      "rule_id": "RT-HDR-002",
+      "title": "Missing Content-Security-Policy header",
+      "severity": "medium",
+      "status": "open",
+      "affected_asset": "example.com",
+      "description": "No Content-Security-Policy header was present on the response.",
+      "evidence_ids": [
+        "ev-4dac4929dabb"
+      ],
+      "security_impact": "Without CSP, the browser has no defense-in-depth restriction on script/resource sources, increasing the impact of any XSS.",
+      "recommendation": "Deploy a Content-Security-Policy appropriate to the application's actual resource needs.",
+      "how_to_fix": "Start with a restrictive default-src and iteratively allow only the origins the application legitimately needs, ideally via report-only mode first.\n\nExample (NGINX config \u2014 illustrative, verify against your actual origin):\nadd_header Content-Security-Policy \"default-src 'self'\" always;",
+      "verification": "Re-run the scan and confirm `content_security_policy.present` is true.",
+      "priority": "Medium \u2014 remediate as part of the next security hardening pass.",
+      "references": []
+    },
+    {
+      "finding_id": "finding-232ebba16077",
+      "rule_id": "RT-HDR-003",
+      "title": "Missing or invalid X-Content-Type-Options header",
+      "severity": "low",
+      "status": "open",
+      "affected_asset": "example.com",
+      "description": "X-Content-Type-Options: nosniff was not present (or had an unexpected value).",
+      "evidence_ids": [
+        "ev-5dc311c540f1"
+      ],
+      "security_impact": "Without nosniff, some browsers may MIME-sniff responses, which can enable content-type confusion attacks.",
+      "recommendation": "Send X-Content-Type-Options: nosniff on all responses.",
+      "how_to_fix": "Add the header at the edge or application layer.\n\nExample (NGINX config \u2014 illustrative, verify against your actual origin):\nadd_header X-Content-Type-Options \"nosniff\" always;\n\nExample (application middleware \u2014 illustrative, verify against your actual stack):\nres.setHeader(\"X-Content-Type-Options\", \"nosniff\");",
+      "verification": "Re-run the scan and confirm `x_content_type_options.valid_nosniff` is true.",
+      "priority": "Low \u2014 remediate opportunistically.",
+      "references": []
+    },
+    {
+      "finding_id": "finding-35ef28a78902",
+      "rule_id": "RT-HDR-004",
+      "title": "Missing Referrer-Policy header",
+      "severity": "low",
+      "status": "open",
+      "affected_asset": "example.com",
+      "description": "No Referrer-Policy header was present on the response.",
+      "evidence_ids": [
+        "ev-e1048b950453"
+      ],
+      "security_impact": "Without an explicit policy, full referrer URLs (potentially including sensitive query parameters) may leak to third-party destinations.",
+      "recommendation": "Set an explicit, minimal Referrer-Policy such as strict-origin-when-cross-origin.",
+      "how_to_fix": "Add the header at the edge or application layer.\n\nExample (NGINX config \u2014 illustrative, verify against your actual origin):\nadd_header Referrer-Policy \"strict-origin-when-cross-origin\" always;\n\nExample (application middleware \u2014 illustrative, verify against your actual stack):\nres.setHeader(\"Referrer-Policy\", \"strict-origin-when-cross-origin\");",
+      "verification": "Re-run the scan and confirm `referrer_policy.present` is true.",
+      "priority": "Low \u2014 remediate opportunistically.",
+      "references": []
+    },
+    {
+      "finding_id": "finding-41481a1ae51e",
+      "rule_id": "RT-HDR-005",
+      "title": "Missing clickjacking / frame protection",
+      "severity": "medium",
+      "status": "open",
+      "affected_asset": "example.com",
+      "description": "Neither a CSP frame-ancestors directive nor an X-Frame-Options header was present.",
+      "evidence_ids": [
+        "ev-0934bf597d6c"
+      ],
+      "security_impact": "The page can be embedded in an attacker-controlled iframe, enabling clickjacking-style UI redress attacks.",
+      "recommendation": "Set CSP frame-ancestors (preferred) or X-Frame-Options to restrict framing.",
+      "how_to_fix": "Add frame-ancestors to the CSP, or fall back to X-Frame-Options for legacy clients.\n\nExample (NGINX config \u2014 illustrative, verify against your actual origin):\nadd_header Content-Security-Policy \"frame-ancestors 'self'\" always;",
+      "verification": "Re-run the scan and confirm `frame_protection.protected` is true.",
+      "priority": "Medium \u2014 remediate as part of the next security hardening pass.",
+      "references": []
+    }
+  ],
+  "module_results": [
+    {
+      "module": "dns",
+      "status": "completed",
+      "duration_ms": 279.31350899962126,
+      "observation_ids": [
+        "obs-adeab17d529e",
+        "ev-28539df5d1f0",
+        "obs-07f30ea92030",
+        "ev-3882d5e39ccb",
+        "obs-b219855afc8a",
+        "ev-899c235ecc77"
+      ],
+      "errors": []
+    },
+    {
+      "module": "connectivity",
+      "status": "completed",
+      "duration_ms": 241.19168100151,
+      "observation_ids": [
+        "obs-1efac4bc7bb5",
+        "ev-548d8aa0c103"
+      ],
+      "errors": []
+    },
+    {
+      "module": "tls",
+      "status": "completed",
+      "duration_ms": 1535.4908410008647,
+      "observation_ids": [
+        "obs-367f8ecfd84d",
+        "ev-fe31fba22597",
+        "obs-4929d91add88",
+        "ev-dff72c357ea8",
+        "obs-0d3b20bff6a8",
+        "ev-8481a2634594",
+        "obs-9da7179be437",
+        "ev-e8f00babee81",
+        "obs-da1cc333ee5b",
+        "ev-86f93ec131e6",
+        "obs-8ad6964be70c",
+        "ev-d05c2e91fc53",
+        "obs-53b98cb0db3b",
+        "ev-1d9210b4d15e",
+        "obs-2cdd218ff539",
+        "ev-591b74a6d49d",
+        "obs-b9b707899e6b",
+        "ev-e89eb52d962c"
+      ],
+      "errors": []
+    },
+    {
+      "module": "http",
+      "status": "completed",
+      "duration_ms": 692.7852509979857,
+      "observation_ids": [
+        "obs-8c7cd372950d",
+        "ev-aa2e722c3069",
+        "obs-8cff2ad288f5",
+        "ev-1a91cddf51ae",
+        "obs-5d40e9790e7e",
+        "ev-fc9f7c026a0e",
+        "obs-da816554e0f7",
+        "ev-59441404ebe8",
+        "obs-0296601d2c12",
+        "ev-93ffe220b412",
+        "obs-53783e063758",
+        "ev-c6c8ccf5b24a",
+        "obs-8daa7e619b69",
+        "ev-b3850e065c70",
+        "obs-32ee254b7938",
+        "ev-4e2772693368",
+        "obs-dceba3848bb1",
+        "ev-76d25ddf8585",
+        "obs-722173b3970b",
+        "ev-fe92ee3f17ca",
+        "obs-2f344a21378d",
+        "ev-ebd87750e152",
+        "obs-c52627ddf298",
+        "ev-4dac4929dabb",
+        "obs-bf3584c6918a",
+        "ev-5dc311c540f1",
+        "obs-ece129410431",
+        "ev-e1048b950453",
+        "obs-499071818338",
+        "ev-0934bf597d6c",
+        "obs-de461fdecd1f",
+        "ev-20192290939f",
+        "obs-58430691ee20",
+        "obs-0d01d637e8da",
+        "ev-061375818439"
+      ],
+      "errors": []
+    },
+    {
+      "module": "edge",
+      "status": "completed",
+      "duration_ms": 0.0,
+      "observation_ids": [
+        "obs-5d48ffe0d90c",
+        "ev-844910055440"
+      ],
+      "errors": []
+    }
+  ],
+  "assessment_label": "REMEDIATION REQUIRED",
+  "severity_summary": {
+    "Severity.INFORMATIONAL": 0,
+    "Severity.LOW": 2,
+    "Severity.MEDIUM": 2,
+    "Severity.HIGH": 2,
+    "Severity.CRITICAL": 0
+  }
+}

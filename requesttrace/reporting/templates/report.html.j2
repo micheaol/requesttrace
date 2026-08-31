@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RequestTrace Report — {{ target.host }}</title>
+<style>
+  :root { color-scheme: light; }
+  body { font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; color: #1a1a1a; background: #fff; line-height: 1.5; }
+  h1, h2, h3 { line-height: 1.25; }
+  h1 { font-size: 1.6rem; }
+  h2 { border-bottom: 2px solid #e2e2e2; padding-bottom: .25rem; margin-top: 2.5rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #d8d8d8; padding: .5rem .6rem; text-align: left; vertical-align: top; font-size: .92rem; }
+  th { background: #f4f4f4; }
+  code { background: #f2f2f2; padding: .1rem .3rem; border-radius: 3px; font-size: .88em; }
+  pre { background: #f7f7f7; border: 1px solid #e2e2e2; border-radius: 4px; padding: .75rem; white-space: pre-wrap; word-break: break-word; }
+  .label { display: inline-block; padding: .25rem .75rem; border-radius: 4px; font-weight: 600; color: #fff; }
+  .label-PASS { background: #1a7f37; }
+  .label-PASS-WITH-OBSERVATIONS { background: #9a6700; }
+  .label-REMEDIATION-REQUIRED { background: #bc4c00; }
+  .label-HIGH-RISK { background: #cf222e; }
+  .label-ASSESSMENT-INCOMPLETE { background: #57606a; }
+  .sev { font-weight: 700; padding: .15rem .5rem; border-radius: 3px; color: #fff; font-size: .82rem; }
+  .sev-critical { background: #82071e; }
+  .sev-high { background: #cf222e; }
+  .sev-medium { background: #9a6700; }
+  .sev-low { background: #0969da; }
+  .sev-informational { background: #57606a; }
+  .finding { border: 1px solid #e2e2e2; border-radius: 6px; padding: 1rem 1.25rem; margin: 1rem 0; }
+  .muted { color: #57606a; font-size: .9rem; }
+  footer { margin-top: 3rem; color: #57606a; font-size: .85rem; border-top: 1px solid #e2e2e2; padding-top: 1rem; }
+  @media print {
+    body { margin: 0; }
+    .finding { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<h1>RequestTrace Security Assessment Report</h1>
+<p class="muted">
+  <strong>Target:</strong> {{ target.normalized_url }}<br>
+  <strong>Scan ID:</strong> {{ metadata.scan_id }}<br>
+  <strong>Started:</strong> {{ metadata.started_at }} &middot; <strong>Completed:</strong> {{ metadata.completed_at }}<br>
+  <strong>Scanner:</strong> {{ metadata.scanner_version }} &middot; <strong>Ruleset:</strong> {{ metadata.ruleset_version }} &middot; <strong>Schema:</strong> {{ metadata.schema_version }}<br>
+  <strong>Runtime:</strong> {{ metadata.runtime }}
+</p>
+<p><span class="label label-{{ assessment_label | replace(' ', '-') }}">{{ assessment_label }}</span></p>
+
+<h2>1. Executive Summary</h2>
+<p>{{ executive_summary }}</p>
+
+<h2>2. Scope</h2>
+<p>{{ scope_statement }}</p>
+
+<h2>3. Methodology</h2>
+<p>{{ methodology_statement }}</p>
+
+<h2>4. Limitations</h2>
+<p>{{ limitations_statement }}</p>
+
+<h2>5. Request-Path Summary</h2>
+<table>
+<thead><tr><th>Stage</th><th>Status</th><th>Detail</th></tr></thead>
+<tbody>
+{% for stage in request_path %}
+<tr><td>{{ stage.name }}{% if stage.is_inferred %} <em>(inferred)</em>{% endif %}</td><td>{{ stage.status_label }}</td><td>{{ stage.detail }}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% macro module_section(number, title, table) %}
+<h2>{{ number }}. {{ title }}</h2>
+<p class="muted">Status: <strong>{{ table.status }}</strong> ({{ table.duration_ms }} ms)</p>
+{% if table.observations %}
+<table>
+<thead><tr><th>Observation</th><th>Value</th></tr></thead>
+<tbody>
+{% for key, value in table.observations.items() %}
+<tr><td><code>{{ key }}</code></td><td>{{ value }}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+{% endif %}
+{% for error in table.errors %}
+<p class="muted">⚠ {{ error }}</p>
+{% endfor %}
+{% endmacro %}
+
+{{ module_section(6, "DNS Assessment", module_tables.dns) }}
+{{ module_section(7, "Connectivity Assessment", module_tables.connectivity) }}
+{{ module_section(8, "TLS Security Assessment", module_tables.tls) }}
+{{ module_section(9, "HTTP/HTTPS Assessment", module_tables.http) }}
+{{ module_section(10, "Security Headers", module_tables.headers) }}
+{{ module_section(11, "Cookie Security", module_tables.cookies) }}
+{{ module_section(12, "CDN / Proxy Indicators", module_tables.edge) }}
+
+<h2>13. Performance Observations</h2>
+<table>
+<tbody>
+<tr><td>TTFB</td><td>{{ performance_observations.ttfb_ms }} ms</td></tr>
+<tr><td>Total request duration</td><td>{{ performance_observations.total_duration_ms }} ms</td></tr>
+</tbody>
+</table>
+
+<h2>14. Findings Summary</h2>
+<table>
+<thead><tr><th>Severity</th><th>Count</th></tr></thead>
+<tbody>
+{% for severity, count in severity_summary %}
+<tr><td>{{ severity }}</td><td>{{ count }}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+<h2>15. Detailed Findings</h2>
+{% if ordered_findings %}
+{% for finding in ordered_findings %}
+<div class="finding">
+  <h3>{{ finding.finding_id }} — {{ finding.title }} <span class="sev sev-{{ finding.severity.value }}">{{ finding.severity.value | upper }}</span></h3>
+  <p class="muted"><strong>Rule:</strong> <code>{{ finding.rule_id }}</code> &middot; <strong>Status:</strong> {{ finding.status.value }} &middot; <strong>Affected Asset:</strong> {{ finding.affected_asset }}</p>
+  <p><strong>Description:</strong> {{ finding.description }}</p>
+  <p><strong>Security Impact:</strong> {{ finding.security_impact }}</p>
+  <p><strong>Recommendation:</strong> {{ finding.recommendation }}</p>
+  <p><strong>How to Fix:</strong></p>
+  <pre>{{ finding.how_to_fix }}</pre>
+  <p><strong>Verification:</strong> {{ finding.verification }}</p>
+  <p><strong>Priority:</strong> {{ finding.priority }}</p>
+  {% set evidences = finding_evidence.get(finding.finding_id, []) %}
+  {% if evidences %}
+  <p><strong>Evidence:</strong></p>
+  <ul>
+  {% for evidence in evidences %}
+    <li><code>{{ evidence.evidence_id }}</code> ({{ evidence.module.value }}, {{ evidence.source_method }}): {{ evidence.normalized_value }}</li>
+  {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+{% endfor %}
+{% else %}
+<p>No actionable findings were identified.</p>
+{% endif %}
+
+<h2>16. Prioritized Recommendations</h2>
+<ol>
+{% for finding in ordered_findings %}
+  <li><span class="sev sev-{{ finding.severity.value }}">{{ finding.severity.value | upper }}</span> {{ finding.title }} — {{ finding.recommendation }}</li>
+{% endfor %}
+</ol>
+
+<h2>17. Conclusion</h2>
+<p>{{ conclusion }}</p>
+
+<h2>18. Evidence Appendix</h2>
+<table>
+<thead><tr><th>Evidence ID</th><th>Module</th><th>Confidence</th><th>Source Method</th><th>Normalized Value</th></tr></thead>
+<tbody>
+{% for evidence in evidence_appendix %}
+<tr><td><code>{{ evidence.evidence_id }}</code></td><td>{{ evidence.module.value }}</td><td>{{ evidence.confidence.value }}</td><td>{{ evidence.source_method }}</td><td>{{ evidence.normalized_value }}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+
+<footer>Generated by RequestTrace {{ metadata.scanner_version }}. This report reflects an external, point-in-time assessment and does not certify compliance with any regulatory framework.</footer>
+</body>
+</html>

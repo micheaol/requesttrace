@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RequestTrace Report — example.com</title>
+<style>
+  :root { color-scheme: light; }
+  body { font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; color: #1a1a1a; background: #fff; line-height: 1.5; }
+  h1, h2, h3 { line-height: 1.25; }
+  h1 { font-size: 1.6rem; }
+  h2 { border-bottom: 2px solid #e2e2e2; padding-bottom: .25rem; margin-top: 2.5rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #d8d8d8; padding: .5rem .6rem; text-align: left; vertical-align: top; font-size: .92rem; }
+  th { background: #f4f4f4; }
+  code { background: #f2f2f2; padding: .1rem .3rem; border-radius: 3px; font-size: .88em; }
+  pre { background: #f7f7f7; border: 1px solid #e2e2e2; border-radius: 4px; padding: .75rem; white-space: pre-wrap; word-break: break-word; }
+  .label { display: inline-block; padding: .25rem .75rem; border-radius: 4px; font-weight: 600; color: #fff; }
+  .label-PASS { background: #1a7f37; }
+  .label-PASS-WITH-OBSERVATIONS { background: #9a6700; }
+  .label-REMEDIATION-REQUIRED { background: #bc4c00; }
+  .label-HIGH-RISK { background: #cf222e; }
+  .label-ASSESSMENT-INCOMPLETE { background: #57606a; }
+  .sev { font-weight: 700; padding: .15rem .5rem; border-radius: 3px; color: #fff; font-size: .82rem; }
+  .sev-critical { background: #82071e; }
+  .sev-high { background: #cf222e; }
+  .sev-medium { background: #9a6700; }
+  .sev-low { background: #0969da; }
+  .sev-informational { background: #57606a; }
+  .finding { border: 1px solid #e2e2e2; border-radius: 6px; padding: 1rem 1.25rem; margin: 1rem 0; }
+  .muted { color: #57606a; font-size: .9rem; }
+  footer { margin-top: 3rem; color: #57606a; font-size: .85rem; border-top: 1px solid #e2e2e2; padding-top: 1rem; }
+  @media print {
+    body { margin: 0; }
+    .finding { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<h1>RequestTrace Security Assessment Report</h1>
+<p class="muted">
+  <strong>Target:</strong> https://example.com/<br>
+  <strong>Scan ID:</strong> scan-632fbb2389e8<br>
+  <strong>Started:</strong> 2026-08-31 18:05:00.127699+00:00 &middot; <strong>Completed:</strong> 2026-08-31 18:05:02.880247+00:00<br>
+  <strong>Scanner:</strong> 1.0.0 &middot; <strong>Ruleset:</strong> 2026.08.1 &middot; <strong>Schema:</strong> 1.0.0<br>
+  <strong>Runtime:</strong> Python 3.13.1 (darwin)
+</p>
+<p><span class="label label-REMEDIATION-REQUIRED">REMEDIATION REQUIRED</span></p>
+
+<h2>1. Executive Summary</h2>
+<p>RequestTrace assessed https://example.com/ and produced an overall result of REMEDIATION REQUIRED, based on 6 finding(s) across DNS, connectivity, TLS, HTTP, header, cookie and edge-indicator checks.</p>
+
+<h2>2. Scope</h2>
+<p>This assessment covers the externally observable request path for https://example.com/ only: DNS resolution, TCP connectivity, TLS negotiation, and the HTTP response (headers, cookies, redirects). No authentication, exploitation or internal network access was attempted.</p>
+
+<h2>3. Methodology</h2>
+<p>RequestTrace 1.0.0 performed a single bounded scan using ruleset 2026.08.1 on Python 3.13.1 (darwin). Findings are generated exclusively from normalized observations linked to sanitized evidence — never from raw/unstructured output.</p>
+
+<h2>4. Limitations</h2>
+<p>RequestTrace observes only what is externally visible. It cannot see internal services, databases or private network hops, does not perform authenticated testing, exploitation, brute force or fuzzing, and does not certify compliance with any regulatory framework. &#39;Not Tested&#39; results reflect a runtime limitation and must never be read as a passing result.</p>
+
+<h2>5. Request-Path Summary</h2>
+<table>
+<thead><tr><th>Stage</th><th>Status</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td>Client DNS Resolution</td><td>Observed</td><td>example.com</td></tr>
+<tr><td>TCP Connectivity</td><td>Observed</td><td>example.com</td></tr>
+<tr><td>TLS Negotiation</td><td>Observed</td><td>example.com</td></tr>
+<tr><td>HTTP Request/Response</td><td>Observed</td><td>https://example.com/</td></tr>
+<tr><td>Edge / CDN (inferred) <em>(inferred)</em></td><td>Inferred from indicators</td><td>Indicators are consistent with Cloudflare. (confidence: high)</td></tr>
+<tr><td>Origin Application <em>(inferred)</em></td><td>Not directly observable</td><td>RequestTrace cannot see internal services, databases or private network hops beyond the externally observable HTTP response.</td></tr>
+</tbody>
+</table>
+
+
+<h2>6. DNS Assessment</h2>
+<p class="muted">Status: <strong>completed</strong> (279.31 ms)</p>
+<table>
+<thead><tr><th>Observation</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td><code>a_records</code></td><td>[&#39;104.20.23.154&#39;, &#39;172.66.147.243&#39;]</td></tr>
+<tr><td><code>aaaa_records</code></td><td>[&#39;2606:4700:10::6814:179a&#39;, &#39;2606:4700:10::ac42:93f3&#39;]</td></tr>
+<tr><td><code>ns_records</code></td><td>[&#39;elliott.ns.cloudflare.com&#39;, &#39;hera.ns.cloudflare.com&#39;]</td></tr>
+</tbody>
+</table>
+
+<h2>7. Connectivity Assessment</h2>
+<p class="muted">Status: <strong>completed</strong> (241.19 ms)</p>
+<table>
+<thead><tr><th>Observation</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td><code>tcp_connection</code></td><td>{&#39;selected_ip&#39;: &#39;104.20.23.154&#39;, &#39;port&#39;: 443, &#39;address_family&#39;: &#39;IPv4&#39;}</td></tr>
+</tbody>
+</table>
+
+<h2>8. TLS Security Assessment</h2>
+<p class="muted">Status: <strong>completed</strong> (1535.49 ms)</p>
+<table>
+<thead><tr><th>Observation</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td><code>sni</code></td><td>example.com</td></tr>
+<tr><td><code>negotiated_protocol</code></td><td>TLSv1.3</td></tr>
+<tr><td><code>negotiated_cipher</code></td><td>{&#39;name&#39;: &#39;TLS_AES_256_GCM_SHA384&#39;, &#39;protocol&#39;: &#39;TLSv1.3&#39;, &#39;bits&#39;: 256}</td></tr>
+<tr><td><code>alpn_protocol</code></td><td>h2</td></tr>
+<tr><td><code>handshake_duration_ms</code></td><td>294.73</td></tr>
+<tr><td><code>certificate</code></td><td>{&#39;subject&#39;: &#39;CN=example.com&#39;, &#39;issuer&#39;: &#39;CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US&#39;, &#39;subject_alternative_names&#39;: [&#39;example.com&#39;, &#39;*.example.com&#39;], &#39;not_valid_before&#39;: &#39;2026-07-29T22:10:08+00:00&#39;, &#39;not_valid_after&#39;: &#39;2026-10-27T22:17:21+00:00&#39;, &#39;days_remaining&#39;: 57, &#39;fingerprint_sha256&#39;: &#39;6153a96fd1a6ab7f4d438fc34932484299d0729d9140b3a126bb2f9c07b02200&#39;, &#39;signature_algorithm&#39;: &#39;ecdsa-with-SHA256&#39;, &#39;public_key_algorithm&#39;: &#39;EC (secp256r1)&#39;, &#39;public_key_size_bits&#39;: 256}</td></tr>
+<tr><td><code>hostname_match</code></td><td>{&#39;matches&#39;: True, &#39;matched_name&#39;: &#39;example.com&#39;}</td></tr>
+<tr><td><code>trust_chain_valid</code></td><td>True</td></tr>
+<tr><td><code>protocol_support</code></td><td>{&#39;TLS 1.0&#39;: {&#39;tested&#39;: True, &#39;supported&#39;: False, &#39;reason&#39;: &#39;[SSL: NO_PROTOCOLS_AVAILABLE] no protocols available (_ssl.c:1018)&#39;, &#39;note&#39;: &#39;Local OpenSSL security policy may also reject this legacy protocol independent of server support.&#39;}, &#39;TLS 1.1&#39;: {&#39;tested&#39;: True, &#39;supported&#39;: False, &#39;reason&#39;: &#39;[SSL: NO_PROTOCOLS_AVAILABLE] no protocols available (_ssl.c:1018)&#39;, &#39;note&#39;: &#39;Local OpenSSL security policy may also reject this legacy protocol independent of server support.&#39;}, &#39;TLS 1.2&#39;: {&#39;tested&#39;: True, &#39;supported&#39;: True, &#39;reason&#39;: None}, &#39;TLS 1.3&#39;: {&#39;tested&#39;: True, &#39;supported&#39;: True, &#39;reason&#39;: None}}</td></tr>
+</tbody>
+</table>
+
+<h2>9. HTTP/HTTPS Assessment</h2>
+<p class="muted">Status: <strong>completed</strong> (692.79 ms)</p>
+<table>
+<thead><tr><th>Observation</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td><code>final_url</code></td><td>https://example.com/</td></tr>
+<tr><td><code>status_code</code></td><td>200</td></tr>
+<tr><td><code>http_version</code></td><td>HTTP/1.1</td></tr>
+<tr><td><code>content_type</code></td><td>text/html</td></tr>
+<tr><td><code>ttfb_ms</code></td><td>425.95</td></tr>
+<tr><td><code>total_duration_ms</code></td><td>437.25</td></tr>
+<tr><td><code>response_headers</code></td><td>{&#39;Date&#39;: &#39;Mon, 31 Aug 2026 18:05:03 GMT&#39;, &#39;Content-Type&#39;: &#39;text/html&#39;, &#39;Transfer-Encoding&#39;: &#39;chunked&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;, &#39;Server&#39;: &#39;cloudflare&#39;, &#39;last-modified&#39;: &#39;Mon, 31 Aug 2026 04:09:32 GMT&#39;, &#39;allow&#39;: &#39;GET, HEAD&#39;, &#39;Age&#39;: &#39;3042&#39;, &#39;cf-cache-status&#39;: &#39;HIT&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;, &#39;CF-RAY&#39;: &#39;a33df60df8530e74-AMS&#39;}</td></tr>
+<tr><td><code>http_to_https_redirect</code></td><td>{&#39;probed_url&#39;: &#39;http://example.com/&#39;, &#39;status_code&#39;: 200, &#39;location&#39;: None, &#39;redirects_to_https&#39;: False}</td></tr>
+</tbody>
+</table>
+
+<h2>10. Security Headers</h2>
+<p class="muted">Status: <strong>not_tested</strong> (None ms)</p>
+<table>
+<thead><tr><th>Observation</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td><code>hsts</code></td><td>{&#39;present&#39;: False, &#39;raw&#39;: None, &#39;max_age&#39;: None, &#39;include_subdomains&#39;: False, &#39;preload&#39;: False}</td></tr>
+<tr><td><code>content_security_policy</code></td><td>{&#39;present&#39;: False, &#39;raw&#39;: None, &#39;high_risk_patterns&#39;: []}</td></tr>
+<tr><td><code>x_content_type_options</code></td><td>{&#39;present&#39;: False, &#39;value&#39;: None, &#39;valid_nosniff&#39;: False}</td></tr>
+<tr><td><code>referrer_policy</code></td><td>{&#39;present&#39;: False, &#39;value&#39;: None}</td></tr>
+<tr><td><code>frame_protection</code></td><td>{&#39;csp_frame_ancestors_present&#39;: False, &#39;x_frame_options_present&#39;: False, &#39;x_frame_options_value&#39;: None, &#39;protected&#39;: False}</td></tr>
+<tr><td><code>permissions_policy</code></td><td>{&#39;present&#39;: False, &#39;value&#39;: None}</td></tr>
+</tbody>
+</table>
+
+<h2>11. Cookie Security</h2>
+<p class="muted">Status: <strong>not_tested</strong> (None ms)</p>
+<table>
+<thead><tr><th>Observation</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td><code>cookies_present</code></td><td>False</td></tr>
+</tbody>
+</table>
+
+<h2>12. CDN / Proxy Indicators</h2>
+<p class="muted">Status: <strong>completed</strong> (0.0 ms)</p>
+<table>
+<thead><tr><th>Observation</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td><code>edge_provider_indicators</code></td><td>{&#39;matches&#39;: [{&#39;provider&#39;: &#39;Cloudflare&#39;, &#39;confidence&#39;: &#39;high&#39;, &#39;indicators&#39;: [&#34;Response header &#39;CF-RAY&#39; present&#34;, &#34;Response header &#39;Server: cloudflare&#39;&#34;, &#34;Certificate issuer &#39;CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US&#39;&#34;], &#39;statement&#39;: &#39;Indicators are consistent with Cloudflare.&#39;}], &#39;unknown&#39;: False}</td></tr>
+</tbody>
+</table>
+
+
+<h2>13. Performance Observations</h2>
+<table>
+<tbody>
+<tr><td>TTFB</td><td>425.95 ms</td></tr>
+<tr><td>Total request duration</td><td>437.25 ms</td></tr>
+</tbody>
+</table>
+
+<h2>14. Findings Summary</h2>
+<table>
+<thead><tr><th>Severity</th><th>Count</th></tr></thead>
+<tbody>
+<tr><td>informational</td><td>0</td></tr>
+<tr><td>low</td><td>2</td></tr>
+<tr><td>medium</td><td>2</td></tr>
+<tr><td>high</td><td>2</td></tr>
+<tr><td>critical</td><td>0</td></tr>
+</tbody>
+</table>
+
+<h2>15. Detailed Findings</h2>
+<div class="finding">
+  <h3>finding-6e4f23eb1b93 — Plain HTTP requests are not redirected to HTTPS <span class="sev sev-high">HIGH</span></h3>
+  <p class="muted"><strong>Rule:</strong> <code>RT-HTTP-002</code> &middot; <strong>Status:</strong> open &middot; <strong>Affected Asset:</strong> example.com</p>
+  <p><strong>Description:</strong> A request to http://example.com/ returned status 200 without redirecting to HTTPS.</p>
+  <p><strong>Security Impact:</strong> Clients that reach the site over plain HTTP (bookmarks, typed URLs, old links) will transmit requests in plaintext instead of being upgraded to a secure channel.</p>
+  <p><strong>Recommendation:</strong> Redirect all plain-HTTP requests to the HTTPS equivalent (301/308).</p>
+  <p><strong>How to Fix:</strong></p>
+  <pre>Add an unconditional redirect from the HTTP listener to the equivalent HTTPS URL.
+
+Example (NGINX config — illustrative, verify against your actual origin):
+server {
+    listen 80;
+    server_name example.com;
+    return 301 https://$host$request_uri;
+}
+
+If using a managed CDN/edge/WAF: enable the &#39;redirect HTTP to HTTPS&#39; / &#39;force HTTPS&#39; option in your CDN or load balancer.</pre>
+  <p><strong>Verification:</strong> Re-run the scan and confirm `http_to_https_redirect.redirects_to_https` is true.</p>
+  <p><strong>Priority:</strong> High — remediate within the next release cycle.</p>
+  <p><strong>Evidence:</strong></p>
+  <ul>
+    <li><code>ev-061375818439</code> (http, requests (plain-HTTP probe, allow_redirects=False)): {&#39;probed_url&#39;: &#39;http://example.com/&#39;, &#39;status_code&#39;: 200, &#39;location&#39;: None, &#39;redirects_to_https&#39;: False}</li>
+  </ul>
+</div>
+<div class="finding">
+  <h3>finding-ccdb1a2fd948 — Missing Strict-Transport-Security (HSTS) header <span class="sev sev-high">HIGH</span></h3>
+  <p class="muted"><strong>Rule:</strong> <code>RT-HDR-001</code> &middot; <strong>Status:</strong> open &middot; <strong>Affected Asset:</strong> example.com</p>
+  <p><strong>Description:</strong> No Strict-Transport-Security header was present on the HTTPS response.</p>
+  <p><strong>Security Impact:</strong> Without HSTS, browsers may still attempt plain-HTTP connections first, leaving an opening for SSL-stripping style downgrade attacks.</p>
+  <p><strong>Recommendation:</strong> Send a Strict-Transport-Security header with a long max-age on every HTTPS response.</p>
+  <p><strong>How to Fix:</strong></p>
+  <pre>Add the HSTS header at the edge or application layer for all HTTPS responses.
+
+Example (NGINX config — illustrative, verify against your actual origin):
+add_header Strict-Transport-Security &#34;max-age=31536000; includeSubDomains&#34; always;
+
+Example (application middleware — illustrative, verify against your actual stack):
+res.setHeader(&#34;Strict-Transport-Security&#34;, &#34;max-age=31536000; includeSubDomains&#34;);
+
+If using a managed CDN/edge/WAF: enable the HSTS header injection feature if your CDN/WAF offers one.</pre>
+  <p><strong>Verification:</strong> Re-run the scan and confirm `hsts.present` is true with an adequate max-age.</p>
+  <p><strong>Priority:</strong> High — remediate within the next release cycle.</p>
+  <p><strong>Evidence:</strong></p>
+  <ul>
+    <li><code>ev-ebd87750e152</code> (headers, header_analyzer.analyze_security_headers): {&#39;present&#39;: False, &#39;raw&#39;: None, &#39;max_age&#39;: None, &#39;include_subdomains&#39;: False, &#39;preload&#39;: False}</li>
+  </ul>
+</div>
+<div class="finding">
+  <h3>finding-a06829568b3a — Missing Content-Security-Policy header <span class="sev sev-medium">MEDIUM</span></h3>
+  <p class="muted"><strong>Rule:</strong> <code>RT-HDR-002</code> &middot; <strong>Status:</strong> open &middot; <strong>Affected Asset:</strong> example.com</p>
+  <p><strong>Description:</strong> No Content-Security-Policy header was present on the response.</p>
+  <p><strong>Security Impact:</strong> Without CSP, the browser has no defense-in-depth restriction on script/resource sources, increasing the impact of any XSS.</p>
+  <p><strong>Recommendation:</strong> Deploy a Content-Security-Policy appropriate to the application&#39;s actual resource needs.</p>
+  <p><strong>How to Fix:</strong></p>
+  <pre>Start with a restrictive default-src and iteratively allow only the origins the application legitimately needs, ideally via report-only mode first.
+
+Example (NGINX config — illustrative, verify against your actual origin):
+add_header Content-Security-Policy &#34;default-src &#39;self&#39;&#34; always;</pre>
+  <p><strong>Verification:</strong> Re-run the scan and confirm `content_security_policy.present` is true.</p>
+  <p><strong>Priority:</strong> Medium — remediate as part of the next security hardening pass.</p>
+  <p><strong>Evidence:</strong></p>
+  <ul>
+    <li><code>ev-4dac4929dabb</code> (headers, header_analyzer.analyze_security_headers): {&#39;present&#39;: False, &#39;raw&#39;: None, &#39;high_risk_patterns&#39;: []}</li>
+  </ul>
+</div>
+<div class="finding">
+  <h3>finding-41481a1ae51e — Missing clickjacking / frame protection <span class="sev sev-medium">MEDIUM</span></h3>
+  <p class="muted"><strong>Rule:</strong> <code>RT-HDR-005</code> &middot; <strong>Status:</strong> open &middot; <strong>Affected Asset:</strong> example.com</p>
+  <p><strong>Description:</strong> Neither a CSP frame-ancestors directive nor an X-Frame-Options header was present.</p>
+  <p><strong>Security Impact:</strong> The page can be embedded in an attacker-controlled iframe, enabling clickjacking-style UI redress attacks.</p>
+  <p><strong>Recommendation:</strong> Set CSP frame-ancestors (preferred) or X-Frame-Options to restrict framing.</p>
+  <p><strong>How to Fix:</strong></p>
+  <pre>Add frame-ancestors to the CSP, or fall back to X-Frame-Options for legacy clients.
+
+Example (NGINX config — illustrative, verify against your actual origin):
+add_header Content-Security-Policy &#34;frame-ancestors &#39;self&#39;&#34; always;</pre>
+  <p><strong>Verification:</strong> Re-run the scan and confirm `frame_protection.protected` is true.</p>
+  <p><strong>Priority:</strong> Medium — remediate as part of the next security hardening pass.</p>
+  <p><strong>Evidence:</strong></p>
+  <ul>
+    <li><code>ev-0934bf597d6c</code> (headers, header_analyzer.analyze_security_headers): {&#39;csp_frame_ancestors_present&#39;: False, &#39;x_frame_options_present&#39;: False, &#39;x_frame_options_value&#39;: None, &#39;protected&#39;: False}</li>
+  </ul>
+</div>
+<div class="finding">
+  <h3>finding-232ebba16077 — Missing or invalid X-Content-Type-Options header <span class="sev sev-low">LOW</span></h3>
+  <p class="muted"><strong>Rule:</strong> <code>RT-HDR-003</code> &middot; <strong>Status:</strong> open &middot; <strong>Affected Asset:</strong> example.com</p>
+  <p><strong>Description:</strong> X-Content-Type-Options: nosniff was not present (or had an unexpected value).</p>
+  <p><strong>Security Impact:</strong> Without nosniff, some browsers may MIME-sniff responses, which can enable content-type confusion attacks.</p>
+  <p><strong>Recommendation:</strong> Send X-Content-Type-Options: nosniff on all responses.</p>
+  <p><strong>How to Fix:</strong></p>
+  <pre>Add the header at the edge or application layer.
+
+Example (NGINX config — illustrative, verify against your actual origin):
+add_header X-Content-Type-Options &#34;nosniff&#34; always;
+
+Example (application middleware — illustrative, verify against your actual stack):
+res.setHeader(&#34;X-Content-Type-Options&#34;, &#34;nosniff&#34;);</pre>
+  <p><strong>Verification:</strong> Re-run the scan and confirm `x_content_type_options.valid_nosniff` is true.</p>
+  <p><strong>Priority:</strong> Low — remediate opportunistically.</p>
+  <p><strong>Evidence:</strong></p>
+  <ul>
+    <li><code>ev-5dc311c540f1</code> (headers, header_analyzer.analyze_security_headers): {&#39;present&#39;: False, &#39;value&#39;: None, &#39;valid_nosniff&#39;: False}</li>
+  </ul>
+</div>
+<div class="finding">
+  <h3>finding-35ef28a78902 — Missing Referrer-Policy header <span class="sev sev-low">LOW</span></h3>
+  <p class="muted"><strong>Rule:</strong> <code>RT-HDR-004</code> &middot; <strong>Status:</strong> open &middot; <strong>Affected Asset:</strong> example.com</p>
+  <p><strong>Description:</strong> No Referrer-Policy header was present on the response.</p>
+  <p><strong>Security Impact:</strong> Without an explicit policy, full referrer URLs (potentially including sensitive query parameters) may leak to third-party destinations.</p>
+  <p><strong>Recommendation:</strong> Set an explicit, minimal Referrer-Policy such as strict-origin-when-cross-origin.</p>
+  <p><strong>How to Fix:</strong></p>
+  <pre>Add the header at the edge or application layer.
+
+Example (NGINX config — illustrative, verify against your actual origin):
+add_header Referrer-Policy &#34;strict-origin-when-cross-origin&#34; always;
+
+Example (application middleware — illustrative, verify against your actual stack):
+res.setHeader(&#34;Referrer-Policy&#34;, &#34;strict-origin-when-cross-origin&#34;);</pre>
+  <p><strong>Verification:</strong> Re-run the scan and confirm `referrer_policy.present` is true.</p>
+  <p><strong>Priority:</strong> Low — remediate opportunistically.</p>
+  <p><strong>Evidence:</strong></p>
+  <ul>
+    <li><code>ev-e1048b950453</code> (headers, header_analyzer.analyze_security_headers): {&#39;present&#39;: False, &#39;value&#39;: None}</li>
+  </ul>
+</div>
+
+<h2>16. Prioritized Recommendations</h2>
+<ol>
+  <li><span class="sev sev-high">HIGH</span> Plain HTTP requests are not redirected to HTTPS — Redirect all plain-HTTP requests to the HTTPS equivalent (301/308).</li>
+  <li><span class="sev sev-high">HIGH</span> Missing Strict-Transport-Security (HSTS) header — Send a Strict-Transport-Security header with a long max-age on every HTTPS response.</li>
+  <li><span class="sev sev-medium">MEDIUM</span> Missing Content-Security-Policy header — Deploy a Content-Security-Policy appropriate to the application&#39;s actual resource needs.</li>
+  <li><span class="sev sev-medium">MEDIUM</span> Missing clickjacking / frame protection — Set CSP frame-ancestors (preferred) or X-Frame-Options to restrict framing.</li>
+  <li><span class="sev sev-low">LOW</span> Missing or invalid X-Content-Type-Options header — Send X-Content-Type-Options: nosniff on all responses.</li>
+  <li><span class="sev sev-low">LOW</span> Missing Referrer-Policy header — Set an explicit, minimal Referrer-Policy such as strict-origin-when-cross-origin.</li>
+</ol>
+
+<h2>17. Conclusion</h2>
+<p>6 finding(s) require attention, 2 of which are High or Critical severity. See Detailed Findings for evidence-linked remediation guidance.</p>
+
+<h2>18. Evidence Appendix</h2>
+<table>
+<thead><tr><th>Evidence ID</th><th>Module</th><th>Confidence</th><th>Source Method</th><th>Normalized Value</th></tr></thead>
+<tbody>
+<tr><td><code>ev-28539df5d1f0</code></td><td>dns</td><td>observed</td><td>dns.resolver.resolve(A)</td><td>[&#39;104.20.23.154&#39;, &#39;172.66.147.243&#39;]</td></tr>
+<tr><td><code>ev-3882d5e39ccb</code></td><td>dns</td><td>observed</td><td>dns.resolver.resolve(AAAA)</td><td>[&#39;2606:4700:10::6814:179a&#39;, &#39;2606:4700:10::ac42:93f3&#39;]</td></tr>
+<tr><td><code>ev-899c235ecc77</code></td><td>dns</td><td>observed</td><td>dns.resolver.resolve(NS)</td><td>[&#39;elliott.ns.cloudflare.com&#39;, &#39;hera.ns.cloudflare.com&#39;]</td></tr>
+<tr><td><code>ev-548d8aa0c103</code></td><td>connectivity</td><td>observed</td><td>socket.create_connection</td><td>{&#39;selected_ip&#39;: &#39;104.20.23.154&#39;, &#39;port&#39;: 443, &#39;address_family&#39;: &#39;IPv4&#39;}</td></tr>
+<tr><td><code>ev-fe31fba22597</code></td><td>tls</td><td>observed</td><td>ssl.SSLContext.wrap_socket</td><td>example.com</td></tr>
+<tr><td><code>ev-dff72c357ea8</code></td><td>tls</td><td>observed</td><td>ssl.SSLContext.wrap_socket</td><td>TLSv1.3</td></tr>
+<tr><td><code>ev-8481a2634594</code></td><td>tls</td><td>observed</td><td>ssl.SSLContext.wrap_socket</td><td>{&#39;name&#39;: &#39;TLS_AES_256_GCM_SHA384&#39;, &#39;protocol&#39;: &#39;TLSv1.3&#39;, &#39;bits&#39;: 256}</td></tr>
+<tr><td><code>ev-e8f00babee81</code></td><td>tls</td><td>observed</td><td>ssl.SSLContext.wrap_socket</td><td>h2</td></tr>
+<tr><td><code>ev-86f93ec131e6</code></td><td>tls</td><td>observed</td><td>ssl.SSLContext.wrap_socket</td><td>294.73</td></tr>
+<tr><td><code>ev-d05c2e91fc53</code></td><td>tls</td><td>observed</td><td>cryptography.x509.load_der_x509_certificate</td><td>{&#39;subject&#39;: &#39;CN=example.com&#39;, &#39;issuer&#39;: &#39;CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US&#39;, &#39;subject_alternative_names&#39;: [&#39;example.com&#39;, &#39;*.example.com&#39;], &#39;not_valid_before&#39;: &#39;2026-07-29T22:10:08+00:00&#39;, &#39;not_valid_after&#39;: &#39;2026-10-27T22:17:21+00:00&#39;, &#39;days_remaining&#39;: 57, &#39;fingerprint_sha256&#39;: &#39;6153a96fd1a6ab7f4d438fc34932484299d0729d9140b3a126bb2f9c07b02200&#39;, &#39;signature_algorithm&#39;: &#39;ecdsa-with-SHA256&#39;, &#39;public_key_algorithm&#39;: &#39;EC (secp256r1)&#39;, &#39;public_key_size_bits&#39;: 256}</td></tr>
+<tr><td><code>ev-1d9210b4d15e</code></td><td>tls</td><td>observed</td><td>manual SAN comparison (independent of trust-chain validation)</td><td>{&#39;matches&#39;: True, &#39;matched_name&#39;: &#39;example.com&#39;}</td></tr>
+<tr><td><code>ev-591b74a6d49d</code></td><td>tls</td><td>observed</td><td>ssl.create_default_context (system trust store)</td><td>True</td></tr>
+<tr><td><code>ev-e89eb52d962c</code></td><td>tls</td><td>observed</td><td>ssl.SSLContext(minimum_version=maximum_version=&lt;probed&gt;)</td><td>{&#39;TLS 1.0&#39;: {&#39;tested&#39;: True, &#39;supported&#39;: False, &#39;reason&#39;: &#39;[SSL: NO_PROTOCOLS_AVAILABLE] no protocols available (_ssl.c:1018)&#39;, &#39;note&#39;: &#39;Local OpenSSL security policy may also reject this legacy protocol independent of server support.&#39;}, &#39;TLS 1.1&#39;: {&#39;tested&#39;: True, &#39;supported&#39;: False, &#39;reason&#39;: &#39;[SSL: NO_PROTOCOLS_AVAILABLE] no protocols available (_ssl.c:1018)&#39;, &#39;note&#39;: &#39;Local OpenSSL security policy may also reject this legacy protocol independent of server support.&#39;}, &#39;TLS 1.2&#39;: {&#39;tested&#39;: True, &#39;supported&#39;: True, &#39;reason&#39;: None}, &#39;TLS 1.3&#39;: {&#39;tested&#39;: True, &#39;supported&#39;: True, &#39;reason&#39;: None}}</td></tr>
+<tr><td><code>ev-aa2e722c3069</code></td><td>redirects</td><td>observed</td><td>redirect_analyzer.analyze_redirect_chain</td><td>[{&#39;url&#39;: &#39;https://example.com/&#39;, &#39;status_code&#39;: 200, &#39;location&#39;: None, &#39;scheme&#39;: &#39;https&#39;}]</td></tr>
+<tr><td><code>ev-1a91cddf51ae</code></td><td>redirects</td><td>observed</td><td>redirect_analyzer.analyze_redirect_chain</td><td>False</td></tr>
+<tr><td><code>ev-fc9f7c026a0e</code></td><td>redirects</td><td>observed</td><td>redirect_analyzer.analyze_redirect_chain</td><td>False</td></tr>
+<tr><td><code>ev-59441404ebe8</code></td><td>http</td><td>observed</td><td>requests.Session.get</td><td>https://example.com/</td></tr>
+<tr><td><code>ev-93ffe220b412</code></td><td>http</td><td>observed</td><td>requests.Session.get</td><td>200</td></tr>
+<tr><td><code>ev-c6c8ccf5b24a</code></td><td>http</td><td>observed</td><td>requests.Session.get</td><td>HTTP/1.1</td></tr>
+<tr><td><code>ev-b3850e065c70</code></td><td>http</td><td>observed</td><td>requests.Session.get</td><td>text/html</td></tr>
+<tr><td><code>ev-4e2772693368</code></td><td>http</td><td>observed</td><td>requests.Session.get</td><td>425.95</td></tr>
+<tr><td><code>ev-76d25ddf8585</code></td><td>http</td><td>observed</td><td>requests.Session.get</td><td>437.25</td></tr>
+<tr><td><code>ev-fe92ee3f17ca</code></td><td>http</td><td>observed</td><td>requests.Session.get</td><td>{&#39;Date&#39;: &#39;Mon, 31 Aug 2026 18:05:03 GMT&#39;, &#39;Content-Type&#39;: &#39;text/html&#39;, &#39;Transfer-Encoding&#39;: &#39;chunked&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;, &#39;Server&#39;: &#39;cloudflare&#39;, &#39;last-modified&#39;: &#39;Mon, 31 Aug 2026 04:09:32 GMT&#39;, &#39;allow&#39;: &#39;GET, HEAD&#39;, &#39;Age&#39;: &#39;3042&#39;, &#39;cf-cache-status&#39;: &#39;HIT&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;, &#39;CF-RAY&#39;: &#39;a33df60df8530e74-AMS&#39;}</td></tr>
+<tr><td><code>ev-ebd87750e152</code></td><td>headers</td><td>observed</td><td>header_analyzer.analyze_security_headers</td><td>{&#39;present&#39;: False, &#39;raw&#39;: None, &#39;max_age&#39;: None, &#39;include_subdomains&#39;: False, &#39;preload&#39;: False}</td></tr>
+<tr><td><code>ev-4dac4929dabb</code></td><td>headers</td><td>observed</td><td>header_analyzer.analyze_security_headers</td><td>{&#39;present&#39;: False, &#39;raw&#39;: None, &#39;high_risk_patterns&#39;: []}</td></tr>
+<tr><td><code>ev-5dc311c540f1</code></td><td>headers</td><td>observed</td><td>header_analyzer.analyze_security_headers</td><td>{&#39;present&#39;: False, &#39;value&#39;: None, &#39;valid_nosniff&#39;: False}</td></tr>
+<tr><td><code>ev-e1048b950453</code></td><td>headers</td><td>observed</td><td>header_analyzer.analyze_security_headers</td><td>{&#39;present&#39;: False, &#39;value&#39;: None}</td></tr>
+<tr><td><code>ev-0934bf597d6c</code></td><td>headers</td><td>observed</td><td>header_analyzer.analyze_security_headers</td><td>{&#39;csp_frame_ancestors_present&#39;: False, &#39;x_frame_options_present&#39;: False, &#39;x_frame_options_value&#39;: None, &#39;protected&#39;: False}</td></tr>
+<tr><td><code>ev-20192290939f</code></td><td>headers</td><td>observed</td><td>header_analyzer.analyze_security_headers</td><td>{&#39;present&#39;: False, &#39;value&#39;: None}</td></tr>
+<tr><td><code>ev-061375818439</code></td><td>http</td><td>observed</td><td>requests (plain-HTTP probe, allow_redirects=False)</td><td>{&#39;probed_url&#39;: &#39;http://example.com/&#39;, &#39;status_code&#39;: 200, &#39;location&#39;: None, &#39;redirects_to_https&#39;: False}</td></tr>
+<tr><td><code>ev-844910055440</code></td><td>edge</td><td>high</td><td>edge_fingerprint.analyze_edge_indicators</td><td>{&#39;matches&#39;: [{&#39;provider&#39;: &#39;Cloudflare&#39;, &#39;confidence&#39;: &#39;high&#39;, &#39;indicators&#39;: [&#34;Response header &#39;CF-RAY&#39; present&#34;, &#34;Response header &#39;Server: cloudflare&#39;&#34;, &#34;Certificate issuer &#39;CN=Cloudflare TLS Issuing ECC CA 3,O=SSL Corporation,C=US&#39;&#34;], &#39;statement&#39;: &#39;Indicators are consistent with Cloudflare.&#39;}], &#39;unknown&#39;: False}</td></tr>
+</tbody>
+</table>
+
+<footer>Generated by RequestTrace 1.0.0. This report reflects an external, point-in-time assessment and does not certify compliance with any regulatory framework.</footer>
+</body>
+</html>

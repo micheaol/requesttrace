@@ -1,0 +1,10 @@
+{
+  "output_dir": "reports",
+  "formats": ["md", "html", "json"],
+  "fail_on": "high",
+  "timeout_seconds": 10,
+  "max_redirects": 10,
+  "user_agent": "RequestTrace/1.0 (+https://github.com/requesttrace/requesttrace)",
+  "certificate_warning_days": 30,
+  "certificate_critical_days": 7
+}
