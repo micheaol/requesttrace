@@ -198,7 +198,13 @@ jobs:
           push: false
           load: true
           tags: requesttrace:security-scan
-          cache-from: type=gha
+          # Deliberately no cache-from/cache-to here: this build feeds a
+          # security gate, and ci.yml's own Docker job writes to the same
+          # default GHA cache scope. Reusing those layers risks scanning
+          # something other than exactly what this commit's Dockerfile
+          # produces. A few extra seconds of build time is the right
+          # trade-off for a scan whose entire job is trustworthiness.
+          no-cache: true
 
       - name: Trivy image scan
         uses: aquasecurity/trivy-action@v0.36.0
