@@ -123,6 +123,10 @@ docker run --rm \
   scan https://example.com --report
 ```
 
+The generated reports land in `./reports/` on your host (that's what the
+`-v` mount above maps to `/app/reports` inside the container) — look there
+once the scan finishes.
+
 (Published images will be available at `ghcr.io/micheaol/requesttrace` once
 this repository has a registry configured — see [Release workflow](#release-engineering).)
 
@@ -140,6 +144,9 @@ pip install -e .
 
 requesttrace scan https://example.com --report
 ```
+
+The generated reports land in `./reports/` by default (override with
+`--output <dir>`) — look there once the scan finishes.
 
 `--report` writes every format it can: Markdown, HTML and JSON always; PDF
 too if you install the optional extra below (it pulls in Pillow and
@@ -211,6 +218,20 @@ recommendations, conclusion, and an evidence appendix.
 
 See a real example bundle in [`examples/sample-report/`](examples/sample-report/)
 (generated from a scan of `example.com`).
+
+### Screenshots
+
+An HTML report from a live scan (target redacted — this is a real domain,
+not the `example.com` bundle above):
+
+| | |
+|---|---|
+| **Cover & summary** | **Request path, DNS & connectivity** |
+| ![Report cover and executive summary](docs/screenshots/report-cover.jpg) | ![Request-path summary, DNS and connectivity assessment](docs/screenshots/report-request-path.jpg) |
+| **Finding: missing HSTS** | **Finding: missing CSP** |
+| ![Detailed finding for a missing Strict-Transport-Security header](docs/screenshots/report-finding-hsts.jpg) | ![Detailed finding for a missing Content-Security-Policy header](docs/screenshots/report-finding-csp.jpg) |
+| **Finding: missing frame protection** | **Prioritized recommendations & conclusion** |
+| ![Detailed finding for missing clickjacking/frame protection](docs/screenshots/report-finding-clickjacking.jpg) | ![Prioritized recommendations list and conclusion](docs/screenshots/report-recommendations.jpg) |
 
 ### Assessment labels
 
