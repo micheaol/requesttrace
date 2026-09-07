@@ -107,7 +107,7 @@ jobs:
 
       - name: Upload smoke-test report artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: docker-smoke-test-reports
           path: reports/
