@@ -151,7 +151,7 @@ jobs:
 
       - name: Upload license report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dependency-licenses
           path: licenses.md
@@ -283,7 +283,7 @@ jobs:
 
       - name: Upload DAST self-test result
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dast-self-test-report
           path: dast-results.json
